@@ -33,7 +33,7 @@
 <body>
 
 <h1>Ventanilla Única Inteligente</h1>
-<div class="meta">Documento de funcionamiento · Versión 0.3 · 19 de octubre de 2026 · Software de autoría propia, prestado como servicio a la alcaldía</div>
+<div class="meta">Documento de funcionamiento · Versión 0.4 · 19 de octubre de 2026<br>Autor: Jaime Raúl López Mancipe · Software JRLM · Software de autoría propia, prestado como servicio a alcaldías municipales<br><b>Documento confidencial.</b></div>
 
 <h2>Contenido</h2>
 <ol class="toc">
@@ -94,7 +94,10 @@
   <tr><td>Ventanilla única</td><td>Página web: un funcionario escanea, sube y asigna la dependencia a mano. La dependencia recibe un correo con el PDF adjunto, sin enlace ni correo de respuesta del ciudadano</td></tr>
   <tr><td>Entradas de PQRS</td><td>Correo central y radicación presencial</td></tr>
   <tr><td>Escáner</td><td>Común, hoja por hoja</td></tr>
-  <tr><td>Software financiero</td><td>Génesis (Hacienda: todos los recursos)</td></tr>
+  <tr><td>Software financiero</td><td>Génesis (Hacienda: todos los recursos). La información está en la nube del proveedor</td></tr>
+  <tr><td>Servicios públicos</td><td>Dependencia de la alcaldía</td></tr>
+  <tr><td>Proveedor de Internet</td><td>Colombia Más</td></tr>
+  <tr><td>Página web y redes sociales</td><td>Las administra la misma persona</td></tr>
   <tr><td>Recaudo</td><td>Banco de Bogotá, PSE</td></tr>
   <tr><td>Jornadas</td><td>8:00–12:00 y 14:00–18:00</td></tr>
   <tr><td>Control Interno</td><td>No hace hoy el seguimiento a PQRS</td></tr>
@@ -281,11 +284,11 @@
 
 <h2>12. Génesis, bancos y PSE</h2>
 <h3>Génesis</h3>
-<p>Conexión <b>solo de lectura</b>, con un usuario propio del sistema autorizado formalmente por la alcaldía (no con las credenciales personales del autor). Por orden de preferencia:</p>
+<p>La información de Génesis está en la nube del proveedor, así que la conexión depende de él. Siempre <b>solo de lectura</b>, solicitada por la alcaldía al proveedor y con un usuario propio del sistema (no con las credenciales personales del autor). Por orden de preferencia:</p>
 <ol>
-  <li>API de Génesis, si existe.</li>
-  <li>Usuario de solo lectura a la base de datos o a una réplica.</li>
-  <li>Exportación programada de archivos (CSV o Excel) que el sistema recoge cada noche.</li>
+  <li>API del proveedor de Génesis, si la ofrece.</li>
+  <li>Reportes exportados (CSV o Excel) programados cada noche a una carpeta de Google Drive de la alcaldía, que el sistema lee.</li>
+  <li>Si no hay ninguna de las dos: Hacienda descarga los reportes y los sube a esa carpeta una vez al día.</li>
 </ol>
 <p>Datos: liquidaciones y pagos de Predial e ICA, cartera morosa, facturación de servicios públicos, ejecución presupuestal (CDP, RP, obligaciones, pagos).</p>
 <h3>PSE con el Banco de Bogotá</h3>
@@ -369,13 +372,12 @@
 
 <h2>18. Pendientes</h2>
 <ol>
-  <li>¿Quién administra la página web de la alcaldía y en qué plataforma está?</li>
-  <li>¿Quién maneja las redes sociales de la alcaldía?</li>
-  <li>¿Qué equipos de red hay hoy (router, puntos de acceso, marca)?</li>
-  <li>¿Génesis guarda la información en una base de datos local o en la nube del proveedor?</li>
-  <li>¿Servicios públicos es una dependencia de la alcaldía o una empresa aparte?</li>
-  <li>¿Nombre para registrar como marca?</li>
+  <li>¿En qué plataforma está la página web de la alcaldía?</li>
+  <li>¿Qué marca y modelo son el router y los puntos de acceso Wi-Fi?</li>
+  <li>¿Cuál es la empresa proveedora de Génesis y ofrece API o reportes exportables?</li>
+  <li>¿El contrato actual del autor tiene cláusula de propiedad intelectual o de productos?</li>
 </ol>
+<p>Lista completa de preguntas: <code>preguntas.md</code>. Información a reunir: <code>plan-de-inicio.md</code>. Protección del autor: <code>propiedad-intelectual.md</code>.</p>
 
 </body>
 </html>
