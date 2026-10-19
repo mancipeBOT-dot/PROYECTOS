@@ -13,7 +13,9 @@ Documento de estructura del proyecto. Versión 0.2 — 2026-10-19.
 | Dependencias | 9 |
 | Computadores | ~3 por dependencia → ~27 PC con Windows 11 |
 | Correo y calendario | Google Workspace (cada dependencia tiene su correo) |
-| Ventanilla única actual | Página web: un funcionario escanea, sube el documento y asigna la dependencia a mano; la dependencia recibe un correo |
+| Ventanilla única actual | Página web: un funcionario escanea, sube el documento y asigna la dependencia a mano; la dependencia recibe un correo con el PDF adjunto (sin enlace ni correo de respuesta del ciudadano) |
+| Entradas de PQRS | 2 canales: (1) correo central que recibe todas las PQRS; (2) radicación presencial, escaneada hoja por hoja en un escáner común |
+| Jornadas | 8:00–12:00 y 14:00–18:00 |
 | Sistema financiero (Hacienda) | Sistema aparte, no conectado con la ventanilla |
 | Recaudo | Banco de Bogotá (PSE) |
 | Firma de actos administrativos | Alcalde |
@@ -65,10 +67,11 @@ Días hábiles = lunes a viernes sin festivos de Colombia. El conteo empieza el 
 
 ### Decisión
 
-**Servidor en la nube contratado y pagado a nuestro nombre (Google Cloud), no en la alcaldía.**
+**Servidor en la nube a nombre del autor (Google Cloud) + copia de respaldo cifrada en un disco físico propio del autor.**
 
 Razones:
-- **Propiedad:** el código nunca se instala en equipos de la alcaldía. Ellos solo usan el sistema por navegador y el agente del PC. Ver [`propiedad-intelectual.md`](propiedad-intelectual.md).
+- **Propiedad:** la cuenta, el código y las llaves de cifrado son del autor. El código nunca se instala en equipos de la alcaldía; ellos solo usan el sistema por navegador y el agente del PC. Ver [`propiedad-intelectual.md`](propiedad-intelectual.md).
+- **Confiabilidad:** un servidor en casa u oficina depende de la luz y del Internet del lugar; para una entidad pública con términos legales, la nube es más estable. El disco propio cubre el "tenerlo en mi poder".
 - **Tamaño:** 27 PC y un volumen bajo de PQRS no justifican comprar un servidor físico.
 - **Google Workspace:** con el mismo proveedor, la conexión con Gmail, Calendar y Tasks se hace con una cuenta de servicio, sin servidores intermedios.
 - **No depende de la alcaldía:** cortes de luz o de red en el edificio no tumban el sistema.
@@ -79,8 +82,20 @@ Razones:
 | Máquina | `e2-standard-4` (4 vCPU, 16 GB RAM) |
 | Disco | 200 GB SSD |
 | SO | Ubuntu Server 24.04 LTS |
-| Respaldo | Instantánea (snapshot) diaria, retención 30 días |
-| Cuenta de facturación | A nombre nuestro (persona o empresa que firma el contrato) |
+| Respaldo | Instantánea (snapshot) diaria, retención 30 días + copia semanal cifrada a disco propio |
+| Cuenta de facturación | A nombre del autor |
+
+### Seguridad de la información
+
+| Medida | Cómo |
+|---|---|
+| Cifrado en tránsito | HTTPS (TLS) en todo; el agente del PC solo habla por HTTPS |
+| Cifrado en reposo | Disco cifrado con llave administrada por el autor (Cloud KMS) |
+| Acceso al servidor | Solo el autor, con llave SSH + verificación en dos pasos; sin puertos abiertos salvo HTTPS |
+| Acceso al sistema | Usuario por funcionario con cuenta de Google de la alcaldía; cada uno ve solo su dependencia |
+| Bitácora | Registro de quién vio, cambió o descargó cada documento |
+| Datos personales | La alcaldía es responsable; el autor es encargado del tratamiento (Ley 1581 de 2012), con acuerdo firmado |
+| IA | Solo recibe el texto necesario para clasificar; la API de Claude no usa esos datos para entrenar |
 
 Lo único que va físicamente en la alcaldía es el firewall de la red (M8): un mini PC con OPNsense, entregado en comodato.
 
@@ -109,15 +124,15 @@ Requisito de la alcaldía: el administrador de Google Workspace debe autorizar l
 ```mermaid
 flowchart LR
   subgraph Alcaldía
-    A1[Escáner<br/>escanear a correo]
-    A2[Correos de ciudadanos]
+    A1[Escáner<br/>carpeta de Drive]
+    A2[Correo central PQRS]
     A4[Ventanilla actual<br/>sigue igual en el piloto]
     D1[Agente en 27 PC<br/>alertas de jornada]
     F1[OPNsense<br/>Wi-Fi]
   end
 
   subgraph Google Workspace
-    G1[Buzón radicacion]
+    G1[Gmail + Drive]
     G2[Calendar / Tasks]
   end
 
@@ -153,9 +168,14 @@ flowchart LR
 
 ### Integración con la ventanilla actual
 
-**Decisión: no se toca la ventanilla actual.** No sabemos quién la aloja y no hay acceso a su código ni a su base de datos. El sistema nuevo recibe los documentos por un buzón de Gmail dedicado (ej. `radicacion@dominio-alcaldia`):
-- El escáner se configura en modo "escanear a correo" hacia ese buzón.
-- Los correos de ciudadanos se reenvían automáticamente a ese buzón con una regla de Gmail.
+**Decisión: no se toca la ventanilla actual.** No sabemos quién la aloja y no hay acceso a su código ni a su base de datos. El sistema lee las dos entradas directamente:
+
+| Canal | Cómo entra al sistema |
+|---|---|
+| Correo central de PQRS | Lectura del buzón por la API de Gmail (solo ese buzón, no los de cada dependencia) |
+| Presencial (escáner hoja por hoja) | El PC del radicador guarda los escaneos en una carpeta sincronizada con Google Drive ("Drive para escritorio"); el sistema la lee. Se escanea cada PQRS completa como un solo PDF |
+
+**Correo de respuesta:** el sistema extrae el correo del ciudadano (del remitente o del texto del documento) y lo muestra en la asignación. Si el ciudadano no dio correo, se marca "respuesta física" con la dirección.
 
 ### Pasos
 
@@ -169,7 +189,7 @@ flowchart LR
      "termino_dias_habiles": 15,
      "prioritario": false,
      "asunto": "Paz y salvo predial predio 01-00-0123",
-     "peticionario": {"nombre": "", "documento": "", "correo": ""},
+     "peticionario": {"nombre": "", "documento": "", "correo_respuesta": "", "direccion": ""},
      "confianza": 0.93
    }
    ```
@@ -178,7 +198,7 @@ flowchart LR
 4. **Términos.** Vencimiento legal (días hábiles con festivos) y **fecha interna = día hábil 10 de 15**.
 5. **Asignación.** Dentro de la dependencia, al funcionario con menos PQRS abiertas en ese tema.
 6. **Plan diario.** Las PQRS de cada funcionario se reparten entre los días hasta la fecha interna, en bloque de mañana y de tarde.
-7. **Alertas.** Pantalla completa en el PC al iniciar sesión en la mañana y al iniciar la jornada de la tarde:
+7. **Alertas.** Pantalla completa en el PC a las 8:00 y a las 14:00 (o al primer inicio de sesión después de esa hora):
    > Hoy tiene 6 PQRS: 2 vencen en ≤ 3 días (rojo), 3 en curso (amarillo), 1 nueva (verde).
 8. **Calendario.** Cada tarea se crea en Google Calendar / Tasks del funcionario.
 9. **Escalamiento.** 3 días hábiles antes del vencimiento sin cerrar → alerta al jefe de dependencia. Vencida → alerta a Control Interno.
@@ -199,7 +219,9 @@ Se ajustan con el funcionario clave de cada dependencia.
 
 Cada reasignación manual queda registrada y se usa para corregir la tabla.
 
-Proceso ya mapeado: licencias de construcción (Planeación) → [`../diagramas/flujo_licencias_construccion.pdf`](../diagramas/flujo_licencias_construccion.pdf).
+### Procesos propios de cada dependencia (después del piloto)
+
+Cada dependencia tiene trámites que funcionan como una PQRS (radicado, responsable, plazo). Se modelan uno por uno con el funcionario clave y luego se conectan en un flujo de toda la alcaldía. Primero: licencias de construcción (Planeación) → [`../diagramas/flujo_licencias_construccion.pdf`](../diagramas/flujo_licencias_construccion.pdf).
 
 ---
 

@@ -1,37 +1,25 @@
 # Preguntas y respuestas
 
-## A. Respondidas (2026-10-19)
+## A. Respondidas
 
 | Pregunta | Respuesta |
 |---|---|
-| Ventanilla actual | Página web: un funcionario escanea, sube y asigna; cada dependencia recibe por su correo. Servidor desconocido |
+| Ventanilla actual | Página web: escanean, suben y asignan; cada dependencia recibe correo con el PDF adjunto, sin enlace ni correo de respuesta |
+| Entradas de PQRS | Correo central de PQRS + radicación presencial |
+| Escáner | Común, hoja por hoja |
+| Jornadas | 8:00–12:00 y 14:00–18:00 |
 | Correo y calendario | Google Workspace |
-| Equipos | Windows 11, ~3 PC por dependencia, 9 dependencias (~27 PC) |
-| Banco de recaudo | Banco de Bogotá (PSE), un solo banco |
-| Firma de la resolución de monitoreo | Alcalde |
-| Volumen | No se mide antes; piloto con pocas PQRS |
-| Borradores de respuesta | **No.** Solo asignación y flujo de información |
+| Equipos | Windows 11, ~3 PC por dependencia, 9 dependencias |
+| Banco | Banco de Bogotá (PSE) |
+| Resolución de monitoreo | La firma el alcalde |
+| Alcance IA | Solo asignación y flujo; sin borradores ni respuestas |
+| Modelo | Proyecto personal; la alcaldía contrata el servicio |
+| Licencias de construcción | Se modelan después del piloto, junto con los procesos de cada dependencia |
 
 ## B. Pendientes
 
-1. ¿El correo que la ventanilla actual envía a cada dependencia trae el PDF adjunto o solo un enlace?
-2. ¿Quién es el administrador de Google Workspace de la alcaldía? (debe autorizar la cuenta de servicio)
-3. ¿Qué escáner usan (marca y modelo)? ¿Permite "escanear a correo"?
-4. ¿Horario exacto de las dos jornadas (ej. 8:00–12:00 y 14:00–18:00)?
-5. ¿Nombre del sistema financiero de Hacienda y del proveedor?
-6. ¿Qué equipos de red tienen hoy (router, access points)?
-7. ¿Servicios públicos es una dependencia de la alcaldía o una empresa aparte?
-8. ¿El contrato se firmará a nombre de una persona natural o de una empresa?
-
-## C. Sugerencias (solo flujo de información, sin respuestas)
-
-| # | Sugerencia | Por qué |
-|---|---|---|
-| 1 | **Consulta de estado por radicado para el ciudadano** | Baja las visitas y llamadas de "¿cómo va mi solicitud?" |
-| 2 | **Control de tutelas** | Términos en horas o pocos días; un incumplimiento termina en desacato |
-| 3 | **Agrupación de PQRS repetidas** | Peticiones idénticas se asignan juntas al mismo funcionario |
-| 4 | **Traslado por competencia** | Si la PQRS no es de la alcaldía, alerta para trasladarla dentro de los 5 días (Ley 1755, art. 21) |
-| 5 | **Bitácora de auditoría** | Quién vio, cambió o reasignó cada PQRS |
-| 6 | **Reporte automático para Control Interno** | Cubre la obligación del art. 76 de la Ley 1474 sin trabajo manual |
-
-**Recomendación:** incluir la #4 (traslado por competencia) en el piloto. Es parte de la asignación, usa la misma clasificación y evita PQRS que se vencen porque nadie las reconoce como propias.
+1. ¿Tiene hoy vínculo con la alcaldía (funcionario de planta o contratista)?
+2. ¿Pongo el repositorio en privado o lo deja público?
+3. ¿Quién administra Google Workspace en la alcaldía?
+4. ¿El radicador escanea en un PC con Windows donde se pueda instalar Google Drive para escritorio?
+5. ¿Nombre del sistema financiero de Hacienda?
