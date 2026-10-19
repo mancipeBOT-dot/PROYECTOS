@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Ventanilla Única Inteligente — Documento de funcionamiento</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: "Inter", "DejaVu Sans", sans-serif; color: #1f2937; font-size: 10.5pt; line-height: 1.45; margin: 0; }
+  h1 { font-size: 22pt; margin: 0 0 4px; letter-spacing: -0.3px; }
+  h2 { font-size: 14pt; margin: 22px 0 8px; padding-bottom: 4px; border-bottom: 2px solid #e5e7eb; break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 14px 0 6px; break-after: avoid; }
+  p { margin: 6px 0; }
+  ul, ol { margin: 6px 0; padding-left: 20px; }
+  li { margin: 2px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 9.5pt; break-inside: auto; }
+  th { background: #f3f4f6; text-align: left; font-weight: 600; }
+  th, td { border: 1px solid #d1d5db; padding: 5px 7px; vertical-align: top; }
+  tr { break-inside: avoid; }
+  code { font-family: "DejaVu Sans Mono", monospace; font-size: 9pt; background: #f3f4f6; padding: 1px 4px; border-radius: 3px; }
+  pre { font-family: "DejaVu Sans Mono", monospace; font-size: 8.5pt; background: #f3f4f6; padding: 8px 10px; border-radius: 6px; white-space: pre-wrap; break-inside: avoid; }
+  .meta { color: #6b7280; font-size: 10pt; }
+  .decision { border-left: 4px solid #2563eb; background: #eff6ff; padding: 8px 12px; margin: 10px 0; break-inside: avoid; }
+  .warn { border-left: 4px solid #d97706; background: #fffbeb; padding: 8px 12px; margin: 10px 0; break-inside: avoid; }
+  @page { size: A4; }
+  @page horizontal { size: A4 landscape; }
+  .figure { page: horizontal; break-before: page; break-after: page; }
+  .figure img { width: 100%; border: 1px solid #e5e7eb; }
+  .figure p { color: #6b7280; font-size: 9pt; }
+  .toc { columns: 2; font-size: 10pt; }
+  .toc li { break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<h1>Ventanilla Única Inteligente</h1>
+<div class="meta">Documento de funcionamiento · Versión 0.3 · 19 de octubre de 2026 · Software de autoría propia, prestado como servicio a la alcaldía</div>
+
+<h2>Contenido</h2>
+<ol class="toc">
+  <li>Resumen</li>
+  <li>Modelo: autoría propia y servicio</li>
+  <li>Situación actual de la alcaldía</li>
+  <li>Servidores y respaldos</li>
+  <li>Entradas de información</li>
+  <li>Procesamiento: radicado, OCR e IA</li>
+  <li>Asignación y términos</li>
+  <li>Seguimiento: alertas, calendario, escalamiento</li>
+  <li>Solicitudes internas entre dependencias</li>
+  <li>Agente de actividad y tiempos muertos</li>
+  <li>Wi-Fi por ID y bloqueo de páginas</li>
+  <li>Génesis, bancos y PSE</li>
+  <li>Reportes</li>
+  <li>Seguridad de la información</li>
+  <li>Propiedad intelectual</li>
+  <li>Fases y piloto</li>
+  <li>Permisos y accesos que se necesitan</li>
+  <li>Pendientes</li>
+</ol>
+
+<h2>1. Resumen</h2>
+<p>Sistema que recibe todas las PQRS de la alcaldía por cualquier canal, las convierte a texto, las clasifica con IA, las asigna a la dependencia y al funcionario, calcula la fecha límite legal y avisa en la pantalla de cada computador al inicio de cada jornada. En el mismo servidor se conectan: solicitudes internas entre dependencias, control de actividad de los computadores, Wi-Fi institucional por identificación, el software financiero Génesis y el recaudo por PSE con el Banco de Bogotá.</p>
+<p><b>La IA solo clasifica y asigna. No redacta borradores ni respuestas.</b></p>
+<p>La imagen del flujo completo está en la página siguiente.</p>
+
+<div class="figure">
+  <img src="../flujo_ventanilla_unica.png" alt="Flujo de información de la Ventanilla Única Inteligente">
+  <p>Figura 1. Flujo de información. Archivo: <code>flujo_ventanilla_unica.png</code>.</p>
+</div>
+
+<h2>2. Modelo: autoría propia y servicio</h2>
+<div class="decision"><b>Decisión:</b> el software es un proyecto personal del autor. La alcaldía no contrata su desarrollo; contrata el <b>servicio</b> (suscripción mensual o anual con licencia de uso).</div>
+<p>Por qué es mejor que venderlo como desarrollo:</p>
+<ul>
+  <li>El código sigue siendo del autor. En un contrato de desarrollo, la ley presume que los derechos pasan a la alcaldía (Ley 23 de 1982, art. 20, modificado por la Ley 1450 de 2011, art. 28).</li>
+  <li>Ingreso recurrente mientras el servicio funcione, no un pago único.</li>
+  <li>El mismo software se puede ofrecer a otras alcaldías.</li>
+  <li>La alcaldía no necesita personal técnico ni servidores propios.</li>
+</ul>
+<h3>Condición de contratista actual</h3>
+<p>El autor es hoy contratista de la alcaldía, con obligaciones que no incluyen crear herramientas. Por eso el software no queda cubierto por la presunción del art. 20. Para que quede claro:</p>
+<ol>
+  <li>Desarrollar fuera del horario de las obligaciones del contrato, con equipos y cuentas propias.</li>
+  <li>No copiar datos reales de la ventanilla ni de Génesis al proyecto con las credenciales de contratista. Desarrollar con documentos de prueba. Los datos reales entran solo con autorización escrita de la alcaldía (Ley 1581 de 2012; Ley 1273 de 2009, art. 269A).</li>
+  <li>Registrar el software en la Dirección Nacional de Derecho de Autor (DNDA) <b>antes</b> de presentarlo a la alcaldía.</li>
+  <li>Antes de firmar el contrato del servicio, confirmar con un abogado que no hay inhabilidad ni conflicto de interés.</li>
+</ol>
+
+<h2>3. Situación actual de la alcaldía</h2>
+<table>
+  <tr><th style="width:32%">Elemento</th><th>Situación</th></tr>
+  <tr><td>Dependencias</td><td>9</td></tr>
+  <tr><td>Computadores</td><td>~3 por dependencia → ~27 PC con Windows 11</td></tr>
+  <tr><td>Correo y calendario</td><td>Google Workspace. Cada dependencia tiene su correo; hay un correo central que recibe todas las PQRS</td></tr>
+  <tr><td>Ventanilla única</td><td>Página web: un funcionario escanea, sube y asigna la dependencia a mano. La dependencia recibe un correo con el PDF adjunto, sin enlace ni correo de respuesta del ciudadano</td></tr>
+  <tr><td>Entradas de PQRS</td><td>Correo central y radicación presencial</td></tr>
+  <tr><td>Escáner</td><td>Común, hoja por hoja</td></tr>
+  <tr><td>Software financiero</td><td>Génesis (Hacienda: todos los recursos)</td></tr>
+  <tr><td>Recaudo</td><td>Banco de Bogotá, PSE</td></tr>
+  <tr><td>Jornadas</td><td>8:00–12:00 y 14:00–18:00</td></tr>
+  <tr><td>Control Interno</td><td>No hace hoy el seguimiento a PQRS</td></tr>
+  <tr><td>Solicitudes de contratación y recursos</td><td>Se hacen en persona, sin trazabilidad</td></tr>
+  <tr><td>Accesos del autor</td><td>Ventanilla (uso completo), Génesis (consulta completa), funcionarios que usan la ventanilla, funcionario clave de cada dependencia, posible acceso al administrador de Google Workspace</td></tr>
+</table>
+
+<h2>4. Servidores y respaldos</h2>
+<div class="decision"><b>Decisión:</b> dos servidores, ambos del autor.
+<ol>
+  <li><b>Producción en la nube</b> (Google Cloud), con la cuenta y la facturación a nombre del autor. Es donde funciona el sistema.</li>
+  <li><b>Servidor físico propio</b> en poder del autor: un NAS que guarda cada día una copia cifrada de todo (base de datos, documentos y código).</li>
+</ol></div>
+<p>Por qué no solo un servidor físico propio para producción: depende de la luz, del Internet y de la IP del lugar donde esté. Si se cae, las alertas y la radicación se detienen, y las PQRS tienen términos legales. La nube da la disponibilidad; el NAS da la posesión física de una copia completa.</p>
+<p>El servidor físico no protege el código por sí mismo. Lo que protege la autoría es el registro en la DNDA, no entregar el código y el contrato de licencia (sección 15).</p>
+
+<h3>Servidor de producción</h3>
+<table>
+  <tr><th style="width:32%">Componente</th><th>Especificación</th></tr>
+  <tr><td>Proveedor</td><td>Google Cloud, Compute Engine (mismo proveedor que Google Workspace)</td></tr>
+  <tr><td>Máquina</td><td><code>e2-standard-4</code>: 4 vCPU, 16 GB RAM</td></tr>
+  <tr><td>Disco</td><td>200 GB SSD, cifrado con llave del autor (Cloud KMS)</td></tr>
+  <tr><td>Sistema operativo</td><td>Ubuntu Server 24.04 LTS</td></tr>
+  <tr><td>Respaldo en la nube</td><td>Instantánea diaria del disco, retención 30 días</td></tr>
+</table>
+
+<h3>Servidor físico propio</h3>
+<table>
+  <tr><th style="width:32%">Componente</th><th>Especificación</th></tr>
+  <tr><td>Tipo</td><td>NAS de 2 bahías (ej. Synology DS224+)</td></tr>
+  <tr><td>Discos</td><td>2 × 4 TB en espejo (RAID 1): si un disco falla, el otro tiene todo</td></tr>
+  <tr><td>Energía</td><td>UPS de al menos 30 minutos</td></tr>
+  <tr><td>Respaldo diario</td><td>2:00 a. m.: copia cifrada de la base de datos, los PDF, los Markdown y el código. Retención: 30 diarias, 12 mensuales</td></tr>
+  <tr><td>Código</td><td>Copia espejo diaria del repositorio privado de GitHub</td></tr>
+  <tr><td>Prueba</td><td>Restauración de prueba una vez al mes</td></tr>
+</table>
+<p>Resultado: 3 copias de los datos (producción, instantánea en la nube, NAS) en 2 lugares distintos.</p>
+
+<h3>Software del servidor</h3>
+<table>
+  <tr><th style="width:24%">Capa</th><th style="width:30%">Herramienta</th><th>Uso</th></tr>
+  <tr><td>Contenedores</td><td>Docker Compose</td><td>Despliegue de todos los servicios</td></tr>
+  <tr><td>Base de datos</td><td>PostgreSQL 16</td><td>Base única del proyecto</td></tr>
+  <tr><td>Archivos</td><td>MinIO</td><td>PDF originales y Markdown</td></tr>
+  <tr><td>Orquestación</td><td>n8n (instalado en el servidor)</td><td>Lectura de Gmail y Drive, redes sociales, Calendar, tareas programadas</td></tr>
+  <tr><td>Backend</td><td>Python + FastAPI</td><td>Reglas de negocio: términos, asignación, reportes, Wi-Fi</td></tr>
+  <tr><td>OCR</td><td>Docling + Tesseract (español)</td><td>PDF escaneado → Markdown</td></tr>
+  <tr><td>IA</td><td>API de Claude (<code>claude-haiku-5-5</code>)</td><td>Solo clasificación</td></tr>
+  <tr><td>Panel web</td><td>React</td><td>Asignador, funcionarios, secretarios, ordenador del gasto, administración del Wi-Fi</td></tr>
+  <tr><td>Agente de PC</td><td>Python compilado (.exe), Windows 11</td><td>Alertas y actividad</td></tr>
+  <tr><td>Red (en la alcaldía)</td><td>OPNsense + AdGuard Home</td><td>Wi-Fi por ID y bloqueo de páginas</td></tr>
+</table>
+<p>Regla: la lógica de negocio vive en el backend. n8n solo mueve información entre sistemas.</p>
+
+<h2>5. Entradas de información</h2>
+<table>
+  <tr><th style="width:24%">Canal</th><th>Cómo entra al sistema</th></tr>
+  <tr><td>Correo central de PQRS</td><td>API de Gmail. El sistema lee solo ese buzón, no los correos de cada dependencia. Cada correo nuevo y sus adjuntos se radican.</td></tr>
+  <tr><td>Radicación presencial</td><td>El radicador escanea la PQRS completa como un solo PDF y lo guarda en una carpeta sincronizada con Google Drive para escritorio. El sistema lee esa carpeta cada minuto.</td></tr>
+  <tr><td>Página web de la alcaldía</td><td>Formulario de PQRS que envía directo al sistema (nombre, documento, correo, dirección, asunto, adjuntos). Al enviarlo, el ciudadano recibe su número de radicado. En la misma página: consulta del estado por número de radicado.</td></tr>
+  <tr><td>Facebook e Instagram</td><td>Los mensajes privados a las páginas oficiales llegan por la API de Meta. Si el mensaje es una PQRS, se radica y se envía al ciudadano un acuse con el número de radicado. Los comentarios públicos no se radican solos; quien maneja las redes puede marcar uno como PQRS desde el panel.</td></tr>
+  <tr><td>WhatsApp (fase posterior)</td><td>WhatsApp Business Platform, mismo tratamiento que Facebook. Tiene costo por conversación.</td></tr>
+</table>
+<p>El acuse de radicado es un mensaje fijo ("Su PQRS fue radicada con el número X"). No es una respuesta.</p>
+<p>La ventanilla actual no se modifica. Durante el piloto sigue funcionando igual, en paralelo.</p>
+
+<h2>6. Procesamiento: radicado, OCR e IA</h2>
+<ol>
+  <li><b>Radicado único.</b> Número consecutivo, fecha y hora de llegada y canal. El PDF original se guarda sin modificar como prueba documental.</li>
+  <li><b>OCR.</b> Docling convierte el PDF a Markdown. Una página en Markdown usa unos 700–900 tokens; la misma página como imagen, unos 1.600. Si una página no se lee bien (manuscrito, sello), solo esa página se envía como imagen.</li>
+  <li><b>Clasificación.</b> La IA recibe el Markdown y la tabla de palabras clave por dependencia. Devuelve:</li>
+</ol>
+<pre>{
+  "tipo": "peticion_general | documentos | consulta | queja | reclamo | denuncia | tutela",
+  "dependencia": "Secretaría de Hacienda",
+  "termino_dias_habiles": 15,
+  "prioritario": false,
+  "asunto": "Paz y salvo predial predio 01-00-0123",
+  "competencia_alcaldia": true,
+  "peticionario": {"nombre": "", "documento": "", "correo_respuesta": "", "direccion": ""},
+  "confianza": 0.93
+}</pre>
+<ul>
+  <li><b>Correo de respuesta:</b> se toma del remitente o del texto del documento. Si no hay correo, se marca "respuesta física" con la dirección.</li>
+  <li><b>Confianza menor a 0,80:</b> pasa al asignador humano, que solo confirma o corrige la dependencia.</li>
+  <li><b>Prioritario:</b> sujetos de especial protección (Ley 1755 de 2015, art. 20).</li>
+  <li><b>Cada corrección humana</b> queda registrada y se usa para ajustar las palabras clave.</li>
+</ul>
+
+<h3>Palabras clave por dependencia (inicial)</h3>
+<p>Se ajustan con el funcionario clave de cada dependencia.</p>
+<table>
+  <tr><th style="width:24%">Dependencia</th><th>Palabras clave</th></tr>
+  <tr><td>Hacienda</td><td>predial, industria y comercio, ICA, paz y salvo, avalúo, prescripción, acuerdo de pago</td></tr>
+  <tr><td>Planeación</td><td>licencia de construcción, uso del suelo, nomenclatura, POT, estratificación</td></tr>
+  <tr><td>Gobierno</td><td>espacio público, ruido, convivencia, establecimiento, policía</td></tr>
+  <tr><td>Servicios públicos</td><td>factura, acueducto, alcantarillado, aseo, medidor, reconexión</td></tr>
+  <tr><td>Desarrollo social</td><td>adulto mayor, subsidio, SISBEN, discapacidad, víctimas</td></tr>
+  <tr><td>Jurídica</td><td>tutela, demanda, notificación, recurso de reposición</td></tr>
+</table>
+
+<h2>7. Asignación y términos</h2>
+<h3>Términos legales (Ley 1755 de 2015, art. 14)</h3>
+<table>
+  <tr><th style="width:50%">Tipo</th><th>Días hábiles</th></tr>
+  <tr><td>Petición general, queja, reclamo</td><td>15</td></tr>
+  <tr><td>Documentos o información</td><td>10</td></tr>
+  <tr><td>Consulta</td><td>30</td></tr>
+  <tr><td>Petición entre autoridades</td><td>10</td></tr>
+  <tr><td>Prórroga</td><td>Avisar antes del vencimiento; máximo el doble del término</td></tr>
+</table>
+<ul>
+  <li>Días hábiles: lunes a viernes sin festivos de Colombia. El conteo empieza el día hábil siguiente a la radicación.</li>
+  <li><b>Fecha interna = día hábil 10 de 15</b>, para dejar 5 días de revisión y firma.</li>
+  <li><b>Funcionario:</b> dentro de la dependencia, el de menor número de PQRS abiertas en ese tema.</li>
+  <li><b>Plan diario:</b> las PQRS de cada funcionario se reparten entre los días hasta la fecha interna, en bloque de mañana (8:00–12:00) y de tarde (14:00–18:00).</li>
+  <li><b>Tutela:</b> va a Jurídica con alerta inmediata.</li>
+  <li><b>Sin competencia de la alcaldía:</b> alerta para trasladar a la entidad competente dentro de 5 días (Ley 1755, art. 21).</li>
+</ul>
+
+<h2>8. Seguimiento: alertas, calendario, escalamiento</h2>
+<table>
+  <tr><th style="width:24%">Elemento</th><th>Funcionamiento</th></tr>
+  <tr><td>Alerta de jornada</td><td>Pantalla completa en cada PC a las 8:00 y a las 14:00, o en el primer inicio de sesión después de esa hora. Muestra: PQRS del bloque, en rojo (vencen en ≤ 3 días hábiles), amarillo (en curso) y verde (nuevas). Se cierra con el botón "Entendido", que queda registrado.</td></tr>
+  <tr><td>Google Calendar</td><td>Un evento por PQRS en el calendario del funcionario, en el bloque asignado.</td></tr>
+  <tr><td>Google Tasks</td><td>Checklist diario por funcionario y por dependencia.</td></tr>
+  <tr><td>Escalamiento</td><td>3 días hábiles antes del vencimiento sin cerrar → correo y alerta al jefe de dependencia. Vencida → alerta a Control Interno.</td></tr>
+  <tr><td>Cierre</td><td>El funcionario marca la PQRS como respondida y registra el número del oficio de salida y la fecha de envío.</td></tr>
+  <tr><td>Consulta ciudadana</td><td>El ciudadano consulta en la página web el estado por radicado: radicada, asignada a [dependencia], respondida.</td></tr>
+</table>
+
+<h3>Procesos propios de cada dependencia (después del piloto)</h3>
+<p>Trámites como las licencias de construcción funcionan igual que una PQRS: radicado, responsable, pasos y plazo. Se modelan uno por uno con el funcionario clave de cada dependencia y luego se conectan en un flujo de toda la alcaldía. El primero ya está mapeado: licencias de construcción (Planeación), archivo <code>diagramas/flujo_licencias_construccion.pdf</code>.</p>
+
+<h2>9. Solicitudes internas entre dependencias</h2>
+<p>Hoy las solicitudes de contratación y recursos se hacen en persona. Con el sistema:</p>
+<ol>
+  <li>La dependencia envía un correo a un buzón único de solicitudes con asunto estándar: <code>[CDP] Secretaría X - objeto</code>.</li>
+  <li>El sistema la radica, adjunta los documentos y crea el expediente.</li>
+  <li>Ruta: dependencia → Hacienda (CDP) → Jurídica (contrato) → Hacienda (RP) → pago.</li>
+  <li>Cada paso registra responsable, fecha de entrada, fecha de salida y estado. Quien solicita ve en qué paso va.</li>
+  <li>Cada paso pendiente aparece en el checklist diario del responsable.</li>
+</ol>
+
+<h2>10. Agente de actividad y tiempos muertos</h2>
+<p>Programa instalado en los 27 PC con Windows 11. Es el mismo programa que muestra las alertas de jornada.</p>
+<table>
+  <tr><th style="width:28%">Dato</th><th>Cómo se obtiene</th></tr>
+  <tr><td>Inicio de labores</td><td>Primer inicio de sesión o desbloqueo del día. Antes de eso no se mide nada.</td></tr>
+  <tr><td>Aplicación o página activa</td><td>Nombre de la ventana en primer plano, cada 60 segundos</td></tr>
+  <tr><td>Actividad</td><td>Momento del último uso de teclado o mouse</td></tr>
+  <tr><td>Tiempo muerto</td><td>Más de 5 minutos sin actividad, o más de 5 minutos fuera de las aplicaciones y páginas asignadas a la dependencia y al funcionario</td></tr>
+  <tr><td>Fin de labores</td><td>Cierre de sesión, bloqueo o apagado</td></tr>
+</table>
+<p><b>No registra teclas, no toma capturas de pantalla, no lee documentos ni correos.</b> Solo metadatos.</p>
+<p><b>Reportes:</b> diario por funcionario (hora de inicio, tiempo activo, tiempo muerto, % en aplicaciones asignadas) y semanal por dependencia (promedios y comparación).</p>
+<p><b>Antes de instalarlo:</b> resolución firmada por el alcalde que adopta la medida y su finalidad; política de tratamiento de datos y aviso a cada funcionario (Ley 1581 de 2012); socialización con los funcionarios. El reporte es insumo de evaluación, no sanción automática.</p>
+
+<h2>11. Wi-Fi por ID y bloqueo de páginas</h2>
+<div class="decision"><b>Decisión:</b> el Wi-Fi se administra desde el panel del sistema, como parte del servicio. En la alcaldía se instala un equipo del autor (entregado en comodato) con OPNsense (firewall y portal) y AdGuard Home (filtro de páginas). El panel los controla por sus API.</div>
+<h3>Cómo obtiene acceso un funcionario</h3>
+<ol>
+  <li>Se conecta a la red Wi-Fi institucional. Es abierta: no pide contraseña.</li>
+  <li>Sin aprobación no hay Internet. Se abre una página de registro que pide la <b>cédula</b>.</li>
+  <li>El sistema verifica que la cédula pertenece a un funcionario activo y guarda la identificación del equipo (dirección MAC).</li>
+  <li>El jefe de la dependencia o el administrador aprueba en el panel. Los PC de la alcaldía se registran una sola vez.</li>
+  <li>El equipo queda con acceso y con el perfil de bloqueo de su dependencia. Si el funcionario se retira, se desactiva su cédula y pierden acceso todos sus equipos.</li>
+</ol>
+<h3>Perfiles de bloqueo</h3>
+<table>
+  <tr><th style="width:24%">Perfil</th><th>Bloqueado</th></tr>
+  <tr><td>Estándar</td><td>Facebook, Instagram, TikTok, X, WhatsApp (app y web), YouTube, plataformas de video, juegos, apuestas</td></tr>
+  <tr><td>Comunicaciones</td><td>Igual al estándar, pero permite las redes sociales para manejar las cuentas oficiales</td></tr>
+  <tr><td>Hacienda / Tesorería</td><td>Estándar + solo conexión por cable para los PC</td></tr>
+</table>
+<h3>Cómo se bloquea</h3>
+<ul>
+  <li>Filtro de nombres de dominio (DNS) por perfil en AdGuard Home.</li>
+  <li>Bloqueo de los rangos de IP de Meta (AS32934) para los perfiles que no permiten redes sociales: cubre WhatsApp aunque no use nombres de dominio.</li>
+  <li>Bloqueo de DNS cifrado (DoH/DoT) y de VPN conocidas, para que no se salte el filtro.</li>
+</ul>
+<div class="warn"><b>Limitaciones.</b> Android 10+ e iOS 14+ cambian la MAC por red: al registrar el celular hay que desactivar "dirección privada" para la red institucional. La MAC se puede copiar; por eso Hacienda y Tesorería van por cable. Con datos móviles propios no hay control.</div>
+<p>Equipo en la alcaldía: mini PC con 4 puertos de red y 8 GB de RAM. Los puntos de acceso Wi-Fi existentes se configuran con una sola red abierta conectada a ese equipo.</p>
+
+<h2>12. Génesis, bancos y PSE</h2>
+<h3>Génesis</h3>
+<p>Conexión <b>solo de lectura</b>, con un usuario propio del sistema autorizado formalmente por la alcaldía (no con las credenciales personales del autor). Por orden de preferencia:</p>
+<ol>
+  <li>API de Génesis, si existe.</li>
+  <li>Usuario de solo lectura a la base de datos o a una réplica.</li>
+  <li>Exportación programada de archivos (CSV o Excel) que el sistema recoge cada noche.</li>
+</ol>
+<p>Datos: liquidaciones y pagos de Predial e ICA, cartera morosa, facturación de servicios públicos, ejecución presupuestal (CDP, RP, obligaciones, pagos).</p>
+<h3>PSE con el Banco de Bogotá</h3>
+<ol>
+  <li>El sistema genera el recibo con código de barras GS1-128 (estándar de recaudo bancario en Colombia).</li>
+  <li>El ciudadano paga por PSE desde la página web o en una oficina del Banco de Bogotá.</li>
+  <li>El banco entrega el archivo diario de recaudo en formato Asobancaria 2001.</li>
+  <li>El sistema concilia los pagos contra los recibos y deja el reporte para cargar en Génesis.</li>
+</ol>
+<p>Trámite: la alcaldía solicita al ejecutivo de cuenta del Banco de Bogotá el recaudo en línea con PSE y el envío del archivo diario.</p>
+
+<h2>13. Reportes</h2>
+<table>
+  <tr><th style="width:20%">Destinatario</th><th>Contenido</th><th style="width:18%">Frecuencia</th></tr>
+  <tr><td>Ordenador del gasto</td><td>Ejecución presupuestal, recaudo vs. meta (Predial, ICA, servicios públicos), PQRS vencidas por dependencia, solicitudes internas detenidas</td><td>Semanal</td></tr>
+  <tr><td>Secretarios</td><td>PQRS por funcionario, vencimientos próximos, solicitudes internas pendientes, tiempos muertos del equipo</td><td>Diario</td></tr>
+  <tr><td>Control Interno</td><td>Informe de PQRS (Ley 1474 de 2011, art. 76): recibidas, respondidas a tiempo, vencidas, por tipo y dependencia</td><td>Semestral, con corte mensual</td></tr>
+  <tr><td>Funcionario</td><td>Sus tareas del día y su propio reporte de actividad</td><td>Diario</td></tr>
+  <tr><td>Ciudadano</td><td>Estado de su PQRS</td><td>En línea</td></tr>
+</table>
+<p>Formato: una página, tablas y semáforo, exportable a PDF.</p>
+
+<h2>14. Seguridad de la información</h2>
+<table>
+  <tr><th style="width:28%">Medida</th><th>Cómo</th></tr>
+  <tr><td>Cifrado en tránsito</td><td>HTTPS en todo: navegador, agente de PC, equipo de red</td></tr>
+  <tr><td>Cifrado en reposo</td><td>Disco del servidor y copias del NAS cifrados con llaves del autor</td></tr>
+  <tr><td>Acceso al servidor</td><td>Solo el autor, con llave SSH y verificación en dos pasos. Solo el puerto HTTPS abierto al público</td></tr>
+  <tr><td>Acceso al sistema</td><td>Ingreso con la cuenta de Google de la alcaldía de cada funcionario. Cada uno ve solo su dependencia; los secretarios su secretaría; el ordenador del gasto todo</td></tr>
+  <tr><td>Bitácora</td><td>Quién vio, cambió, reasignó o descargó cada documento, con fecha y hora</td></tr>
+  <tr><td>Datos personales</td><td>La alcaldía es responsable y el autor es encargado del tratamiento (Ley 1581 de 2012), con acuerdo firmado</td></tr>
+  <tr><td>IA</td><td>Solo recibe el texto necesario para clasificar. La API de Claude no usa esos datos para entrenar</td></tr>
+  <tr><td>Fin del servicio</td><td>Los datos se entregan a la alcaldía en CSV y PDF en 30 días y luego se borran del servidor</td></tr>
+</table>
+
+<h2>15. Propiedad intelectual</h2>
+<table>
+  <tr><th style="width:28%">Qué</th><th>Protección</th></tr>
+  <tr><td>Código, manuales, diagramas</td><td>Derecho de autor desde que se crean (Ley 23 de 1982; Decisión Andina 351 de 1993)</td></tr>
+  <tr><td>La idea</td><td>No se protege; solo la forma concreta en que se escribió (Decisión 351, art. 7)</td></tr>
+  <tr><td>Software como invento</td><td>No es patentable como tal (Decisión Andina 486, art. 15)</td></tr>
+  <tr><td>Nombre del producto</td><td>Marca ante la SIC, 10 años renovables</td></tr>
+</table>
+<h3>Pasos</h3>
+<ol>
+  <li>Repositorio de código privado.</li>
+  <li>Registro del software en la DNDA (gratis, en línea) antes de presentarlo a la alcaldía y en cada versión mayor.</li>
+  <li>Registro de la marca ante la SIC (clases 9 y 42).</li>
+  <li>Cesión de derechos y confidencialidad firmadas con cualquier colaborador.</li>
+  <li>Contrato con la alcaldía: licencia de uso no exclusiva y temporal; "el software es preexistente y de titularidad exclusiva del autor; no hay cesión de derechos patrimoniales"; sin entrega de código; prohibido copiar o descompilar; datos de la alcaldía devueltos al terminar.</li>
+  <li>Si la alcaldía exige garantía de continuidad: depósito del código ante notario, que solo se libera si el autor deja de prestar el servicio.</li>
+</ol>
+
+<h2>16. Fases y piloto</h2>
+<table>
+  <tr><th style="width:18%">Fase</th><th>Alcance</th><th style="width:16%">Duración</th><th style="width:28%">Criterio para pasar</th></tr>
+  <tr><td>0. Base</td><td>Registro DNDA, servidores, repositorio privado, palabras clave con funcionarios clave</td><td>3 semanas</td><td>Software registrado; servidores con respaldo diario probado</td></tr>
+  <tr><td>1. Piloto PQRS</td><td>Entradas (correo central y presencial), OCR, IA, asignación, alertas y Calendar en <b>Hacienda y Planeación, 6 PC</b></td><td>6 semanas desarrollo + 4 operación</td><td>≥ 90 % de asignaciones correctas; 100 % de PQRS con fecha límite; alertas en los 6 PC</td></tr>
+  <tr><td>2. Toda la alcaldía</td><td>9 dependencias, 27 PC, página web</td><td>3 semanas</td><td>Mismo criterio</td></tr>
+  <tr><td>3. Redes sociales</td><td>Facebook e Instagram</td><td>3 semanas + aprobación de Meta</td><td>Mensajes radicados con acuse</td></tr>
+  <tr><td>4. Actividad</td><td>Agente de actividad y reportes</td><td>4 semanas</td><td>Resolución firmada; agente en 27 PC</td></tr>
+  <tr><td>5. Wi-Fi por ID</td><td>Equipo de red y panel</td><td>3 semanas</td><td>Ningún equipo sin registro con Internet</td></tr>
+  <tr><td>6. Financiero</td><td>Génesis, solicitudes internas, reportes del ordenador del gasto</td><td>6 semanas</td><td>Reporte semanal automático</td></tr>
+  <tr><td>7. Pagos</td><td>PSE Banco de Bogotá y conciliación</td><td>Depende del banco</td><td>Conciliación diaria automática</td></tr>
+</table>
+<p>En las 2 primeras semanas de operación del piloto el sistema trabaja en paralelo: el asignador sigue con la ventanilla actual y se compara su asignación con la del sistema. Desde la semana 3 el sistema asigna y el asignador solo revisa los casos dudosos.</p>
+
+<h2>17. Permisos y accesos que se necesitan</h2>
+<table>
+  <tr><th style="width:34%">Permiso</th><th style="width:28%">Quién lo da</th><th>Para qué</th></tr>
+  <tr><td>Lectura del correo central de PQRS y carpeta de Drive</td><td>Administrador de Google Workspace</td><td>Entradas</td></tr>
+  <tr><td>Escritura en Calendar y Tasks de los funcionarios</td><td>Administrador de Google Workspace</td><td>Tareas y checklist</td></tr>
+  <tr><td>Formulario en la página web</td><td>Quien administra la página de la alcaldía</td><td>Entrada web y consulta de estado</td></tr>
+  <tr><td>Administración de las páginas de Facebook e Instagram</td><td>Comunicaciones / prensa</td><td>Mensajes como PQRS</td></tr>
+  <tr><td>Usuario de solo lectura en Génesis</td><td>Secretaría de Hacienda y proveedor de Génesis</td><td>Reportes financieros</td></tr>
+  <tr><td>Recaudo PSE y archivo diario</td><td>Tesorería con Banco de Bogotá</td><td>Pagos y conciliación</td></tr>
+  <tr><td>Resolución de monitoreo</td><td>Alcalde</td><td>Agente de actividad</td></tr>
+  <tr><td>Uso de datos reales en el piloto</td><td>Alcalde o secretario general, por escrito</td><td>Piloto</td></tr>
+  <tr><td>Instalación del equipo de red</td><td>Sistemas / secretaría general</td><td>Wi-Fi por ID</td></tr>
+</table>
+
+<h2>18. Pendientes</h2>
+<ol>
+  <li>¿Quién administra la página web de la alcaldía y en qué plataforma está?</li>
+  <li>¿Quién maneja las redes sociales de la alcaldía?</li>
+  <li>¿Qué equipos de red hay hoy (router, puntos de acceso, marca)?</li>
+  <li>¿Génesis guarda la información en una base de datos local o en la nube del proveedor?</li>
+  <li>¿Servicios públicos es una dependencia de la alcaldía o una empresa aparte?</li>
+  <li>¿Nombre para registrar como marca?</li>
+</ol>
+
+</body>
+</html>

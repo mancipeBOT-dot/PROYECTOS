@@ -21,8 +21,8 @@
 |---|---|---|
 | Que el software pase a la alcaldía | Ley 23 de 1982, art. 20 (mod. Ley 1450 de 2011, art. 28): lo creado en cumplimiento de un contrato de prestación de servicios o de trabajo se presume del contratante, salvo pacto escrito | Crearlo fuera de cualquier contrato con la alcaldía y registrarlo antes de contratar |
 | Que lo copien | La idea no se protege | No entregar código; registro en la DNDA como prueba de fecha |
-| Inhabilidad para contratar | Ley 80 de 1993, art. 8: servidores públicos no pueden contratar con su propia entidad | Confirmar el vínculo actual del autor con la alcaldía |
-| Uso de datos reales sin permiso | Ley 1581 de 2012 | Desarrollar con documentos de prueba; usar datos reales solo con autorización escrita para el piloto |
+| Condición de contratista actual | El autor es contratista de la alcaldía; sus obligaciones no incluyen crear herramientas | Desarrollar fuera del horario del contrato, con equipos y cuentas propias; confirmar con abogado que no hay inhabilidad ni conflicto de interés antes de firmar el servicio |
+| Uso de datos reales sin permiso | Ley 1581 de 2012; Ley 1273 de 2009, art. 269A | No copiar datos de la ventanilla ni de Génesis con las credenciales de contratista; desarrollar con documentos de prueba; datos reales solo con autorización escrita |
 
 ## Pasos, en orden
 

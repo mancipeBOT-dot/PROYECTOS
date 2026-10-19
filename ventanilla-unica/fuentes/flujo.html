@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Flujo Ventanilla Única Inteligente</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { width: 1900px; background: #ffffff; font-family: "Inter", "DejaVu Sans", sans-serif; color: #1f2937; padding: 36px 40px 30px; }
+  h1 { font-size: 34px; font-weight: 700; letter-spacing: -0.5px; }
+  .subtitle { font-size: 17px; color: #6b7280; margin-top: 6px; }
+
+  .infra { display: grid; grid-template-columns: 1fr 230px 1fr; align-items: center; margin-top: 26px; }
+  .infra .srv { background: #1e293b; color: #f8fafc; border-radius: 12px; padding: 16px 20px; }
+  .infra .srv b { font-size: 18px; display: block; }
+  .infra .srv span { font-size: 14.5px; color: #cbd5e1; display: block; margin-top: 4px; line-height: 1.4; }
+  .infra .link { text-align: center; font-size: 14px; color: #334155; font-weight: 600; }
+  .infra .link .line { height: 3px; background: #334155; margin: 6px 14px; position: relative; }
+  .infra .link .line::after { content: ""; position: absolute; right: -2px; top: -6px; border-left: 12px solid #334155; border-top: 7.5px solid transparent; border-bottom: 7.5px solid transparent; }
+  .infra-note { text-align: center; font-size: 14px; color: #475569; margin-top: 10px; }
+  .down { text-align: center; font-size: 26px; color: #94a3b8; line-height: 1; margin: 6px 0 2px; }
+
+  .flow { display: grid; grid-template-columns: repeat(5, 1fr); column-gap: 52px; margin-top: 8px; position: relative; }
+  .col { position: relative; }
+  .col:not(:last-child)::after { content: ""; position: absolute; right: -44px; top: 300px; border-left: 34px solid #9ca3af; border-top: 26px solid transparent; border-bottom: 26px solid transparent; }
+  .head { color: #fff; font-weight: 700; font-size: 17px; text-transform: uppercase; letter-spacing: 0.6px; padding: 11px 14px; border-radius: 10px; text-align: center; }
+  .box { border: 2px solid; border-radius: 10px; padding: 11px 13px; margin-top: 12px; background: #fff; min-height: 96px; }
+  .box b { font-size: 16.5px; display: block; line-height: 1.25; }
+  .box span { font-size: 14px; color: #4b5563; display: block; margin-top: 5px; line-height: 1.38; }
+  .box.alt { border-style: dashed; }
+  .arrow { text-align: center; color: #9ca3af; font-size: 18px; line-height: 1; margin: 4px 0 -8px; }
+
+  .c1 .head { background: #2563eb; } .c1 .box { border-color: #93c5fd; background: #eff6ff; }
+  .c2 .head { background: #7c3aed; } .c2 .box { border-color: #c4b5fd; background: #f5f3ff; }
+  .c3 .head { background: #0d9488; } .c3 .box { border-color: #5eead4; background: #f0fdfa; }
+  .c4 .head { background: #d97706; } .c4 .box { border-color: #fcd34d; background: #fffbeb; }
+  .c5 .head { background: #16a34a; } .c5 .box { border-color: #86efac; background: #f0fdf4; }
+
+  .band-title { margin-top: 26px; font-size: 17px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: #374151; display: flex; align-items: center; gap: 14px; }
+  .band-title::after { content: ""; flex: 1; height: 2px; background: #d1d5db; }
+  .band { display: grid; grid-template-columns: repeat(5, 1fr); column-gap: 52px; margin-top: 12px; }
+  .band .box { border-color: #cbd5e1; background: #f8fafc; min-height: 150px; }
+  .band .tag { display: inline-block; margin-top: 8px; font-size: 12.5px; font-weight: 600; color: #16a34a; background: #dcfce7; border-radius: 6px; padding: 2px 7px; }
+
+  .foot { margin-top: 22px; display: flex; gap: 28px; font-size: 14.5px; color: #374151; border-top: 2px solid #e5e7eb; padding-top: 14px; }
+  .foot div::before { content: "■ "; color: #9ca3af; }
+</style>
+</head>
+<body>
+  <h1>Ventanilla Única Inteligente — flujo de información</h1>
+  <div class="subtitle">Alcaldía piloto · 9 dependencias · ~27 PC Windows 11 · Google Workspace · Jornadas 8:00–12:00 y 14:00–18:00 · Software de autoría propia, prestado como servicio</div>
+
+  <div class="infra">
+    <div class="srv"><b>Servidor de producción en la nube</b><span>Google Cloud · cuenta a nombre del autor · 4 vCPU, 16 GB RAM, 200 GB SSD cifrado · instantánea diaria (30 días)</span></div>
+    <div class="link">Copia cifrada diaria · 2:00 a. m.<div class="line"></div></div>
+    <div class="srv"><b>Servidor físico propio del autor</b><span>NAS de 2 discos 4 TB en espejo (RAID 1) + UPS · respaldo diario de base de datos, documentos y código</span></div>
+  </div>
+  <div class="infra-note">El código, la base de datos y las llaves de cifrado son del autor. La alcaldía usa el sistema por navegador y no recibe código.</div>
+  <div class="down">▼</div>
+
+  <div class="flow">
+    <div class="col c1">
+      <div class="head">1 · Entradas</div>
+      <div class="box"><b>Correo central de PQRS</b><span>Gmail de la alcaldía. El sistema lee solo ese buzón por la API de Gmail.</span></div>
+      <div class="box"><b>Radicación presencial</b><span>Escáner hoja por hoja → un PDF por PQRS → carpeta de Google Drive para escritorio.</span></div>
+      <div class="box"><b>Página web de la alcaldía</b><span>Formulario PQRS conectado al sistema + consulta de estado por radicado.</span></div>
+      <div class="box"><b>Facebook e Instagram</b><span>Mensajes privados a las páginas oficiales → PQRS. Acuse con número de radicado.</span></div>
+    </div>
+
+    <div class="col c2">
+      <div class="head">2 · Procesamiento</div>
+      <div class="box"><b>Radicado único</b><span>Número, fecha y hora. Se guarda el PDF original sin modificar.</span></div>
+      <div class="arrow">▼</div>
+      <div class="box"><b>OCR → Markdown</b><span>Docling + Tesseract en español. Texto liviano para la IA (≈ mitad de tokens que una imagen).</span></div>
+      <div class="arrow">▼</div>
+      <div class="box"><b>IA clasifica</b><span>Dependencia, tipo, término legal, prioridad, datos del peticionario y correo de respuesta. Usa palabras clave por dependencia.</span></div>
+      <div class="arrow">▼</div>
+      <div class="box alt"><b>Confianza &lt; 80 % → revisión humana</b><span>El asignador actual solo confirma los casos dudosos.</span></div>
+    </div>
+
+    <div class="col c3">
+      <div class="head">3 · Asignación</div>
+      <div class="box"><b>Cálculo de términos</b><span>Días hábiles sin festivos. 15 general · 10 documentos · 30 consultas. Fecha interna = día 10 de 15.</span></div>
+      <div class="arrow">▼</div>
+      <div class="box"><b>Funcionario responsable</b><span>Dentro de la dependencia, al de menor carga en ese tema.</span></div>
+      <div class="arrow">▼</div>
+      <div class="box"><b>Plan diario</b><span>PQRS repartidas por día hasta la fecha interna, en bloque de mañana y de tarde.</span></div>
+      <div class="arrow">▼</div>
+      <div class="box alt"><b>Casos especiales</b><span>Tutela → Jurídica, alerta inmediata. Sin competencia → traslado en 5 días.</span></div>
+    </div>
+
+    <div class="col c4">
+      <div class="head">4 · Seguimiento</div>
+      <div class="box"><b>Alerta en pantalla completa</b><span>En cada PC a las 8:00 y 14:00: PQRS del día en rojo, amarillo y verde.</span></div>
+      <div class="arrow">▼</div>
+      <div class="box"><b>Google Calendar y Tasks</b><span>Tareas del día por funcionario y checklist por dependencia.</span></div>
+      <div class="arrow">▼</div>
+      <div class="box"><b>Escalamiento</b><span>3 días hábiles antes del vencimiento → jefe. Vencida → Control Interno.</span></div>
+      <div class="arrow">▼</div>
+      <div class="box"><b>Cierre</b><span>El funcionario registra el número de oficio de salida. El sistema no redacta respuestas.</span></div>
+    </div>
+
+    <div class="col c5">
+      <div class="head">5 · Reportes</div>
+      <div class="box"><b>Ordenador del gasto</b><span>Semanal: ejecución presupuestal, recaudo vs. meta, PQRS vencidas por dependencia.</span></div>
+      <div class="box"><b>Secretarios</b><span>Diario: PQRS por funcionario, vencimientos, solicitudes internas, tiempos muertos.</span></div>
+      <div class="box"><b>Control Interno</b><span>Informe de PQRS (Ley 1474, art. 76): semestral con corte mensual.</span></div>
+      <div class="box"><b>Ciudadano</b><span>Estado de su PQRS por radicado en la página web.</span></div>
+    </div>
+  </div>
+
+  <div class="band-title">Módulos conectados al mismo servidor</div>
+  <div class="band">
+    <div class="box"><b>Solicitudes internas</b><span>Por correo con radicado: dependencia → Hacienda (CDP) → Jurídica (contrato) → Hacienda (RP) → pago.</span><div class="tag">→ reportes</div></div>
+    <div class="box"><b>Agente de actividad (27 PC)</b><span>Inicio de labores, tiempo activo, tiempo muerto &gt; 5 min. Sin capturas ni teclas.</span><div class="tag">→ reportes</div></div>
+    <div class="box"><b>Wi-Fi por ID</b><span>Red abierta sin Internet. Cédula + equipo aprobados en el panel → acceso. Bloqueo de redes sociales y WhatsApp por perfil.</span><div class="tag">→ reportes</div></div>
+    <div class="box"><b>Génesis (Hacienda)</b><span>Solo lectura: Predial, ICA, cartera, servicios públicos, presupuesto (CDP, RP, pagos).</span><div class="tag">→ reportes</div></div>
+    <div class="box"><b>Banco de Bogotá · PSE</b><span>Recibo con código de barras → pago PSE → archivo diario Asobancaria → conciliación.</span><div class="tag">→ reportes</div></div>
+  </div>
+
+  <div class="foot">
+    <div>La IA solo clasifica y asigna; no genera borradores ni respuestas.</div>
+    <div>Datos de la alcaldía: responsable la alcaldía, encargado el autor (Ley 1581 de 2012).</div>
+    <div>Versión 0.3 · 2026-10-19</div>
+  </div>
+</body>
+</html>
