@@ -26,8 +26,8 @@ def test_reparte_por_carga_cuando_nadie_maneja_el_tema(ventanilla):
 def test_baja_confianza_queda_en_revision_y_se_confirma(ventanilla):
     p = ventanilla.radicar("Solicito que revisen la vía", Canal.WEB, LUNES)
     assert p.estado == Estado.REVISION and p.funcionario_id is None
-    ventanilla.confirmar(p.radicado, "Secretaría de Obras Públicas")
-    assert p.estado == Estado.ASIGNADA and p.funcionario_id.startswith("OP-")
+    ventanilla.confirmar(p.radicado, "Secretaría de Infraestructura")
+    assert p.estado == Estado.ASIGNADA and p.funcionario_id.startswith("IN-")
 
 
 def test_plan_diario_no_pasa_la_fecha_interna(ventanilla):

@@ -1,43 +1,447 @@
 {
-  "_nota": "Datos ficticios para el prototipo. Los nombres de dependencias y palabras clave se ajustan con el funcionario clave de cada dependencia.",
-  "dependencias": [
-    {"nombre": "Despacho del Alcalde", "palabras_clave": ["alcalde", "audiencia con el alcalde", "plan de desarrollo", "rendicion de cuentas"]},
-    {"nombre": "Secretaría de Gobierno", "palabras_clave": ["espacio publico", "ruido", "convivencia", "establecimiento de comercio", "inspeccion de policia", "comisaria de familia", "violencia intrafamiliar", "invasion", "vendedores ambulantes", "permiso para evento"]},
-    {"nombre": "Secretaría de Hacienda", "palabras_clave": ["predial", "impuesto predial", "industria y comercio", "ica", "avaluo", "prescripcion", "acuerdo de pago", "paz y salvo", "liquidacion", "impuesto", "cobro coactivo", "recibo de pago"]},
-    {"nombre": "Secretaría de Planeación", "palabras_clave": ["licencia de construccion", "uso del suelo", "nomenclatura", "pot", "estratificacion", "estrato", "sisben", "linea de paramento", "subdivision", "loteo", "plano"]},
-    {"nombre": "Secretaría de Desarrollo Social", "palabras_clave": ["adulto mayor", "colombia mayor", "subsidio", "discapacidad", "victimas", "mujer", "juventud", "primera infancia", "programa social", "mercado", "ayuda humanitaria"]},
-    {"nombre": "Secretaría de Obras Públicas", "palabras_clave": ["via", "vias", "huecos", "pavimentacion", "puente", "alumbrado publico", "luminaria", "placa huella", "obra", "andenes", "maquinaria"]},
-    {"nombre": "Unidad de Servicios Públicos", "palabras_clave": ["acueducto", "alcantarillado", "aseo", "factura", "medidor", "reconexion", "agua", "recoleccion de basuras", "fuga", "servicio de agua", "suspension del servicio"]},
-    {"nombre": "Oficina Jurídica", "palabras_clave": ["tutela", "accion de tutela", "demanda", "juzgado", "notificacion judicial", "recurso de reposicion", "derecho de peticion reiterado", "contrato"]},
-    {"nombre": "Oficina de Control Interno", "palabras_clave": ["control interno", "auditoria", "irregularidad", "corrupcion", "funcionario no responde", "mala atencion"]}
-  ],
-  "funcionarios": [
-    {"id": "DA-1", "nombre": "Funcionario 1 — Despacho", "dependencia": "Despacho del Alcalde", "correo": "despacho1@alcaldia.ejemplo", "temas": ["audiencia"]},
-    {"id": "DA-2", "nombre": "Funcionario 2 — Despacho", "dependencia": "Despacho del Alcalde", "correo": "despacho2@alcaldia.ejemplo", "temas": ["plan de desarrollo"]},
-    {"id": "DA-3", "nombre": "Funcionario 3 — Despacho", "dependencia": "Despacho del Alcalde", "correo": "despacho3@alcaldia.ejemplo", "temas": []},
-    {"id": "GO-1", "nombre": "Funcionario 1 — Gobierno", "dependencia": "Secretaría de Gobierno", "correo": "gobierno1@alcaldia.ejemplo", "temas": ["espacio publico", "vendedores ambulantes"]},
-    {"id": "GO-2", "nombre": "Funcionario 2 — Gobierno", "dependencia": "Secretaría de Gobierno", "correo": "gobierno2@alcaldia.ejemplo", "temas": ["ruido", "establecimiento de comercio"]},
-    {"id": "GO-3", "nombre": "Funcionario 3 — Gobierno", "dependencia": "Secretaría de Gobierno", "correo": "gobierno3@alcaldia.ejemplo", "temas": ["comisaria de familia", "violencia intrafamiliar"]},
-    {"id": "HA-1", "nombre": "Funcionario 1 — Hacienda", "dependencia": "Secretaría de Hacienda", "correo": "hacienda1@alcaldia.ejemplo", "temas": ["predial", "paz y salvo"]},
-    {"id": "HA-2", "nombre": "Funcionario 2 — Hacienda", "dependencia": "Secretaría de Hacienda", "correo": "hacienda2@alcaldia.ejemplo", "temas": ["industria y comercio", "ica"]},
-    {"id": "HA-3", "nombre": "Funcionario 3 — Hacienda", "dependencia": "Secretaría de Hacienda", "correo": "hacienda3@alcaldia.ejemplo", "temas": ["acuerdo de pago", "cobro coactivo", "prescripcion"]},
-    {"id": "PL-1", "nombre": "Funcionario 1 — Planeación", "dependencia": "Secretaría de Planeación", "correo": "planeacion1@alcaldia.ejemplo", "temas": ["licencia de construccion", "subdivision"]},
-    {"id": "PL-2", "nombre": "Funcionario 2 — Planeación", "dependencia": "Secretaría de Planeación", "correo": "planeacion2@alcaldia.ejemplo", "temas": ["uso del suelo", "nomenclatura", "linea de paramento"]},
-    {"id": "PL-3", "nombre": "Funcionario 3 — Planeación", "dependencia": "Secretaría de Planeación", "correo": "planeacion3@alcaldia.ejemplo", "temas": ["sisben", "estratificacion", "estrato"]},
-    {"id": "DS-1", "nombre": "Funcionario 1 — Desarrollo Social", "dependencia": "Secretaría de Desarrollo Social", "correo": "social1@alcaldia.ejemplo", "temas": ["adulto mayor", "colombia mayor"]},
-    {"id": "DS-2", "nombre": "Funcionario 2 — Desarrollo Social", "dependencia": "Secretaría de Desarrollo Social", "correo": "social2@alcaldia.ejemplo", "temas": ["discapacidad", "victimas"]},
-    {"id": "DS-3", "nombre": "Funcionario 3 — Desarrollo Social", "dependencia": "Secretaría de Desarrollo Social", "correo": "social3@alcaldia.ejemplo", "temas": ["primera infancia", "juventud", "mujer"]},
-    {"id": "OP-1", "nombre": "Funcionario 1 — Obras Públicas", "dependencia": "Secretaría de Obras Públicas", "correo": "obras1@alcaldia.ejemplo", "temas": ["via", "huecos", "pavimentacion"]},
-    {"id": "OP-2", "nombre": "Funcionario 2 — Obras Públicas", "dependencia": "Secretaría de Obras Públicas", "correo": "obras2@alcaldia.ejemplo", "temas": ["alumbrado publico", "luminaria"]},
-    {"id": "OP-3", "nombre": "Funcionario 3 — Obras Públicas", "dependencia": "Secretaría de Obras Públicas", "correo": "obras3@alcaldia.ejemplo", "temas": ["puente", "placa huella", "maquinaria"]},
-    {"id": "SP-1", "nombre": "Funcionario 1 — Servicios Públicos", "dependencia": "Unidad de Servicios Públicos", "correo": "servicios1@alcaldia.ejemplo", "temas": ["factura", "medidor"]},
-    {"id": "SP-2", "nombre": "Funcionario 2 — Servicios Públicos", "dependencia": "Unidad de Servicios Públicos", "correo": "servicios2@alcaldia.ejemplo", "temas": ["acueducto", "fuga", "agua"]},
-    {"id": "SP-3", "nombre": "Funcionario 3 — Servicios Públicos", "dependencia": "Unidad de Servicios Públicos", "correo": "servicios3@alcaldia.ejemplo", "temas": ["aseo", "recoleccion de basuras", "alcantarillado"]},
-    {"id": "JU-1", "nombre": "Funcionario 1 — Jurídica", "dependencia": "Oficina Jurídica", "correo": "juridica1@alcaldia.ejemplo", "temas": ["tutela"]},
-    {"id": "JU-2", "nombre": "Funcionario 2 — Jurídica", "dependencia": "Oficina Jurídica", "correo": "juridica2@alcaldia.ejemplo", "temas": ["demanda", "recurso de reposicion"]},
-    {"id": "JU-3", "nombre": "Funcionario 3 — Jurídica", "dependencia": "Oficina Jurídica", "correo": "juridica3@alcaldia.ejemplo", "temas": ["traslado", "contrato"]},
-    {"id": "CI-1", "nombre": "Funcionario 1 — Control Interno", "dependencia": "Oficina de Control Interno", "correo": "control1@alcaldia.ejemplo", "temas": ["auditoria"]},
-    {"id": "CI-2", "nombre": "Funcionario 2 — Control Interno", "dependencia": "Oficina de Control Interno", "correo": "control2@alcaldia.ejemplo", "temas": ["irregularidad", "corrupcion"]},
-    {"id": "CI-3", "nombre": "Funcionario 3 — Control Interno", "dependencia": "Oficina de Control Interno", "correo": "control3@alcaldia.ejemplo", "temas": ["mala atencion"]}
-  ]
+ "_nota": "Datos ficticios para el prototipo. Nombres de dependencias por confirmar; palabras clave por ajustar con el funcionario clave de cada dependencia. dependencia_juridica recibe tutelas y traslados por competencia (por confirmar).",
+ "dependencia_juridica": "Despacho del Alcalde",
+ "dependencias": [
+  {
+   "nombre": "Despacho del Alcalde",
+   "palabras_clave": [
+    "alcalde",
+    "audiencia con el alcalde",
+    "plan de desarrollo",
+    "rendicion de cuentas",
+    "tutela",
+    "accion de tutela",
+    "juzgado",
+    "demanda",
+    "notificacion judicial",
+    "recurso de reposicion"
+   ]
+  },
+  {
+   "nombre": "Secretaría de Gobierno",
+   "palabras_clave": [
+    "espacio publico",
+    "ruido",
+    "convivencia",
+    "establecimiento de comercio",
+    "inspeccion de policia",
+    "comisaria de familia",
+    "violencia intrafamiliar",
+    "invasion",
+    "vendedores ambulantes",
+    "permiso para evento"
+   ]
+  },
+  {
+   "nombre": "Secretaría de Hacienda",
+   "palabras_clave": [
+    "predial",
+    "impuesto predial",
+    "industria y comercio",
+    "ica",
+    "avaluo",
+    "prescripcion",
+    "acuerdo de pago",
+    "paz y salvo",
+    "liquidacion",
+    "impuesto",
+    "cobro coactivo",
+    "recibo de pago"
+   ]
+  },
+  {
+   "nombre": "Secretaría de Planeación",
+   "palabras_clave": [
+    "licencia de construccion",
+    "uso del suelo",
+    "nomenclatura",
+    "pot",
+    "estratificacion",
+    "estrato",
+    "sisben",
+    "linea de paramento",
+    "subdivision",
+    "loteo",
+    "plano"
+   ]
+  },
+  {
+   "nombre": "Secretaría de Infraestructura",
+   "palabras_clave": [
+    "via",
+    "vias",
+    "huecos",
+    "pavimentacion",
+    "puente",
+    "alumbrado publico",
+    "luminaria",
+    "placa huella",
+    "obra",
+    "obras",
+    "andenes",
+    "maquinaria",
+    "polideportivo"
+   ]
+  },
+  {
+   "nombre": "Oficina de Contratación",
+   "palabras_clave": [
+    "contrato",
+    "contratista",
+    "contratacion",
+    "licitacion",
+    "secop",
+    "propuesta",
+    "pliego",
+    "supervision del contrato",
+    "interventoria",
+    "materiales"
+   ]
+  },
+  {
+   "nombre": "Unidad de Servicios Públicos",
+   "palabras_clave": [
+    "acueducto",
+    "alcantarillado",
+    "aseo",
+    "factura",
+    "medidor",
+    "reconexion",
+    "agua",
+    "recoleccion de basuras",
+    "fuga",
+    "servicio de agua",
+    "suspension del servicio"
+   ]
+  },
+  {
+   "nombre": "Secretaría de Desarrollo",
+   "palabras_clave": [
+    "adulto mayor",
+    "colombia mayor",
+    "subsidio",
+    "discapacidad",
+    "victimas",
+    "mujer",
+    "juventud",
+    "primera infancia",
+    "programa social",
+    "ayuda humanitaria",
+    "campesino",
+    "agropecuario",
+    "asistencia tecnica",
+    "emprendimiento"
+   ]
+  },
+  {
+   "nombre": "Secretaría de Bienes y Servicios",
+   "palabras_clave": [
+    "almacen",
+    "inventario",
+    "bienes del municipio",
+    "comodato",
+    "arrendamiento",
+    "prestamo del salon",
+    "prestamo del coliseo",
+    "parque automotor",
+    "vehiculo oficial",
+    "mantenimiento de las instalaciones",
+    "suministro",
+    "papeleria"
+   ]
+  }
+ ],
+ "funcionarios": [
+  {
+   "id": "DA-1",
+   "nombre": "Funcionario 1 — Despacho",
+   "dependencia": "Despacho del Alcalde",
+   "correo": "da1@alcaldia.ejemplo",
+   "temas": [
+    "audiencia",
+    "plan de desarrollo"
+   ]
+  },
+  {
+   "id": "DA-2",
+   "nombre": "Funcionario 2 — Despacho",
+   "dependencia": "Despacho del Alcalde",
+   "correo": "da2@alcaldia.ejemplo",
+   "temas": [
+    "tutela",
+    "juzgado",
+    "demanda"
+   ]
+  },
+  {
+   "id": "DA-3",
+   "nombre": "Funcionario 3 — Despacho",
+   "dependencia": "Despacho del Alcalde",
+   "correo": "da3@alcaldia.ejemplo",
+   "temas": [
+    "traslado",
+    "recurso de reposicion"
+   ]
+  },
+  {
+   "id": "GO-1",
+   "nombre": "Funcionario 1 — Gobierno",
+   "dependencia": "Secretaría de Gobierno",
+   "correo": "go1@alcaldia.ejemplo",
+   "temas": [
+    "espacio publico",
+    "vendedores ambulantes",
+    "permiso para evento"
+   ]
+  },
+  {
+   "id": "GO-2",
+   "nombre": "Funcionario 2 — Gobierno",
+   "dependencia": "Secretaría de Gobierno",
+   "correo": "go2@alcaldia.ejemplo",
+   "temas": [
+    "ruido",
+    "establecimiento de comercio"
+   ]
+  },
+  {
+   "id": "GO-3",
+   "nombre": "Funcionario 3 — Gobierno",
+   "dependencia": "Secretaría de Gobierno",
+   "correo": "go3@alcaldia.ejemplo",
+   "temas": [
+    "comisaria de familia",
+    "violencia intrafamiliar"
+   ]
+  },
+  {
+   "id": "HA-1",
+   "nombre": "Funcionario 1 — Hacienda",
+   "dependencia": "Secretaría de Hacienda",
+   "correo": "ha1@alcaldia.ejemplo",
+   "temas": [
+    "predial",
+    "paz y salvo"
+   ]
+  },
+  {
+   "id": "HA-2",
+   "nombre": "Funcionario 2 — Hacienda",
+   "dependencia": "Secretaría de Hacienda",
+   "correo": "ha2@alcaldia.ejemplo",
+   "temas": [
+    "industria y comercio",
+    "ica"
+   ]
+  },
+  {
+   "id": "HA-3",
+   "nombre": "Funcionario 3 — Hacienda",
+   "dependencia": "Secretaría de Hacienda",
+   "correo": "ha3@alcaldia.ejemplo",
+   "temas": [
+    "acuerdo de pago",
+    "cobro coactivo",
+    "prescripcion"
+   ]
+  },
+  {
+   "id": "PL-1",
+   "nombre": "Funcionario 1 — Planeación",
+   "dependencia": "Secretaría de Planeación",
+   "correo": "pl1@alcaldia.ejemplo",
+   "temas": [
+    "licencia de construccion",
+    "subdivision"
+   ]
+  },
+  {
+   "id": "PL-2",
+   "nombre": "Funcionario 2 — Planeación",
+   "dependencia": "Secretaría de Planeación",
+   "correo": "pl2@alcaldia.ejemplo",
+   "temas": [
+    "uso del suelo",
+    "nomenclatura",
+    "linea de paramento"
+   ]
+  },
+  {
+   "id": "PL-3",
+   "nombre": "Funcionario 3 — Planeación",
+   "dependencia": "Secretaría de Planeación",
+   "correo": "pl3@alcaldia.ejemplo",
+   "temas": [
+    "sisben",
+    "estratificacion",
+    "estrato"
+   ]
+  },
+  {
+   "id": "IN-1",
+   "nombre": "Funcionario 1 — Infraestructura",
+   "dependencia": "Secretaría de Infraestructura",
+   "correo": "in1@alcaldia.ejemplo",
+   "temas": [
+    "via",
+    "huecos",
+    "pavimentacion"
+   ]
+  },
+  {
+   "id": "IN-2",
+   "nombre": "Funcionario 2 — Infraestructura",
+   "dependencia": "Secretaría de Infraestructura",
+   "correo": "in2@alcaldia.ejemplo",
+   "temas": [
+    "alumbrado publico",
+    "luminaria"
+   ]
+  },
+  {
+   "id": "IN-3",
+   "nombre": "Funcionario 3 — Infraestructura",
+   "dependencia": "Secretaría de Infraestructura",
+   "correo": "in3@alcaldia.ejemplo",
+   "temas": [
+    "puente",
+    "placa huella",
+    "maquinaria",
+    "obra"
+   ]
+  },
+  {
+   "id": "CO-1",
+   "nombre": "Funcionario 1 — Contratación",
+   "dependencia": "Oficina de Contratación",
+   "correo": "co1@alcaldia.ejemplo",
+   "temas": [
+    "contrato",
+    "contratista",
+    "supervision del contrato"
+   ]
+  },
+  {
+   "id": "CO-2",
+   "nombre": "Funcionario 2 — Contratación",
+   "dependencia": "Oficina de Contratación",
+   "correo": "co2@alcaldia.ejemplo",
+   "temas": [
+    "licitacion",
+    "secop",
+    "pliego",
+    "propuesta"
+   ]
+  },
+  {
+   "id": "CO-3",
+   "nombre": "Funcionario 3 — Contratación",
+   "dependencia": "Oficina de Contratación",
+   "correo": "co3@alcaldia.ejemplo",
+   "temas": [
+    "interventoria"
+   ]
+  },
+  {
+   "id": "SP-1",
+   "nombre": "Funcionario 1 — Servicios Públicos",
+   "dependencia": "Unidad de Servicios Públicos",
+   "correo": "sp1@alcaldia.ejemplo",
+   "temas": [
+    "factura",
+    "medidor",
+    "reconexion"
+   ]
+  },
+  {
+   "id": "SP-2",
+   "nombre": "Funcionario 2 — Servicios Públicos",
+   "dependencia": "Unidad de Servicios Públicos",
+   "correo": "sp2@alcaldia.ejemplo",
+   "temas": [
+    "acueducto",
+    "fuga",
+    "agua"
+   ]
+  },
+  {
+   "id": "SP-3",
+   "nombre": "Funcionario 3 — Servicios Públicos",
+   "dependencia": "Unidad de Servicios Públicos",
+   "correo": "sp3@alcaldia.ejemplo",
+   "temas": [
+    "aseo",
+    "recoleccion de basuras",
+    "alcantarillado"
+   ]
+  },
+  {
+   "id": "DE-1",
+   "nombre": "Funcionario 1 — Desarrollo",
+   "dependencia": "Secretaría de Desarrollo",
+   "correo": "de1@alcaldia.ejemplo",
+   "temas": [
+    "adulto mayor",
+    "colombia mayor"
+   ]
+  },
+  {
+   "id": "DE-2",
+   "nombre": "Funcionario 2 — Desarrollo",
+   "dependencia": "Secretaría de Desarrollo",
+   "correo": "de2@alcaldia.ejemplo",
+   "temas": [
+    "discapacidad",
+    "victimas",
+    "primera infancia"
+   ]
+  },
+  {
+   "id": "DE-3",
+   "nombre": "Funcionario 3 — Desarrollo",
+   "dependencia": "Secretaría de Desarrollo",
+   "correo": "de3@alcaldia.ejemplo",
+   "temas": [
+    "campesino",
+    "agropecuario",
+    "asistencia tecnica",
+    "emprendimiento"
+   ]
+  },
+  {
+   "id": "BS-1",
+   "nombre": "Funcionario 1 — Bienes y Servicios",
+   "dependencia": "Secretaría de Bienes y Servicios",
+   "correo": "bs1@alcaldia.ejemplo",
+   "temas": [
+    "almacen",
+    "inventario",
+    "suministro",
+    "papeleria"
+   ]
+  },
+  {
+   "id": "BS-2",
+   "nombre": "Funcionario 2 — Bienes y Servicios",
+   "dependencia": "Secretaría de Bienes y Servicios",
+   "correo": "bs2@alcaldia.ejemplo",
+   "temas": [
+    "comodato",
+    "arrendamiento",
+    "prestamo del salon",
+    "prestamo del coliseo"
+   ]
+  },
+  {
+   "id": "BS-3",
+   "nombre": "Funcionario 3 — Bienes y Servicios",
+   "dependencia": "Secretaría de Bienes y Servicios",
+   "correo": "bs3@alcaldia.ejemplo",
+   "temas": [
+    "parque automotor",
+    "vehiculo oficial",
+    "mantenimiento de las instalaciones"
+   ]
+  }
+ ]
 }

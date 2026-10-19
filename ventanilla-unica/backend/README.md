@@ -14,9 +14,9 @@ Copyright © 2026 Jaime Raúl López Mancipe. Todos los derechos reservados. Ver
 | Alerta de inicio de jornada y escalamiento (jefe / Control Interno) | `ventanilla/asignacion.py` |
 | Flujo completo: radicar → revisar → asignar → cerrar | `ventanilla/servicio.py` |
 | API web | `ventanilla/api.py` |
-| Piloto simulado con 20 PQRS ficticias | `ventanilla/simulacion.py` |
+| Piloto simulado con 22 PQRS ficticias | `ventanilla/simulacion.py` |
 
-Datos de prueba (ficticios): `datos/alcaldia.json` (9 dependencias, 27 funcionarios) y `datos/pqrs_prueba.json`.
+Datos de prueba (ficticios): `datos/alcaldia.json` (las 9 dependencias de la alcaldía piloto con 27 funcionarios ficticios) y `datos/pqrs_prueba.json` (22 PQRS inventadas).
 
 Falta para completar la Fase 1: OCR (Docling), lectura de Gmail y Drive, base de datos PostgreSQL, agente de Windows y conexión con Google Calendar.
 
@@ -48,6 +48,6 @@ Si la IA no responde, declina o no hay internet, el sistema usa el clasificador 
 
 ## Resultado de la simulación (palabras clave, sin IA)
 
-- Dependencia correcta: 19 de 20 (95 %). La que falló quedó en revisión humana, así que ninguna se asignó mal.
-- Tipo correcto: 20 de 20.
-- En revisión humana: 2 de 20.
+- Dependencia correcta: 21 de 22 (95 %). La que falló quedó en revisión humana, así que ninguna se asignó mal.
+- Tipo correcto: 22 de 22.
+- En revisión humana: 4 de 22.

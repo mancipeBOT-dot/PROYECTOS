@@ -9,9 +9,11 @@ DATOS = Path(__file__).resolve().parent.parent / "datos"
 
 
 class Catalogo:
-    def __init__(self, dependencias: list[Dependencia], funcionarios: list[Funcionario]):
+    def __init__(self, dependencias: list[Dependencia], funcionarios: list[Funcionario], dependencia_juridica: str):
         self.dependencias = dependencias
         self.funcionarios = funcionarios
+        # Recibe tutelas y PQRS que no son competencia de la alcaldía (para traslado).
+        self.dependencia_juridica = dependencia_juridica
 
     @classmethod
     def desde_archivo(cls, ruta: Path = DATOS / "alcaldia.json") -> "Catalogo":
@@ -19,6 +21,7 @@ class Catalogo:
         return cls(
             [Dependencia(**d) for d in datos["dependencias"]],
             [Funcionario(**f) for f in datos["funcionarios"]],
+            datos["dependencia_juridica"],
         )
 
     def nombres_dependencias(self) -> list[str]:

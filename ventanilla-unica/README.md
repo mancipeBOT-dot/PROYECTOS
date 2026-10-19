@@ -12,6 +12,7 @@ Asigna automáticamente las PQRS a la dependencia y al funcionario, calcula la f
 | [`flujo_ventanilla_unica.png`](flujo_ventanilla_unica.png) | Imagen del flujo de información |
 | [`propiedad-intelectual.md`](propiedad-intelectual.md) | Lista de verificación para proteger al autor y al proyecto |
 | [`plan-de-inicio.md`](plan-de-inicio.md) | Por dónde empezar e información que hay que reunir |
+| [`pasar-a-escritorio.md`](pasar-a-escritorio.md) | Cómo seguir el proyecto en Claude Code desde tu computador |
 | [`preguntas.md`](preguntas.md) | Respuestas recibidas y pendientes |
 | [`backend/`](backend/) | Código del prototipo (Fase 1): clasificación, términos, asignación, alertas, API |
 | [`LICENCIA.md`](LICENCIA.md) | Software propietario, todos los derechos reservados |

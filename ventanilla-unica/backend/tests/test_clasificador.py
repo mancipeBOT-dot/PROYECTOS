@@ -28,13 +28,13 @@ def test_extrae_correo_y_cedula(catalogo):
 def test_tutela_va_a_juridica(catalogo):
     c = ClasificadorPalabrasClave(catalogo).clasificar("Se notifica acción de tutela por el predial")
     assert c.tipo == TipoPQRS.TUTELA
-    assert c.dependencia == "Oficina Jurídica"
+    assert c.dependencia == "Despacho del Alcalde"
 
 
 def test_sin_competencia_marca_traslado(catalogo):
     c = ClasificadorPalabrasClave(catalogo).clasificar("La EPS no me entrega los medicamentos")
     assert not c.competencia_alcaldia
-    assert c.dependencia == "Oficina Jurídica"
+    assert c.dependencia == "Despacho del Alcalde"
 
 
 def test_prioridad_menor_de_edad(catalogo):
