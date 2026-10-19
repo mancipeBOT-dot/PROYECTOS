@@ -13,6 +13,8 @@ Asigna automáticamente las PQRS a la dependencia y al funcionario, calcula la f
 | [`propiedad-intelectual.md`](propiedad-intelectual.md) | Lista de verificación para proteger al autor y al proyecto |
 | [`plan-de-inicio.md`](plan-de-inicio.md) | Por dónde empezar e información que hay que reunir |
 | [`preguntas.md`](preguntas.md) | Respuestas recibidas y pendientes |
+| [`backend/`](backend/) | Código del prototipo (Fase 1): clasificación, términos, asignación, alertas, API |
+| [`LICENCIA.md`](LICENCIA.md) | Software propietario, todos los derechos reservados |
 | `fuentes/` | HTML de origen del PDF y la imagen. Regenerar: `node fuentes/render.js` (requiere Playwright) |
 
 ![Flujo de información](flujo_ventanilla_unica.png)
@@ -25,7 +27,7 @@ Asigna automáticamente las PQRS a la dependencia y al funcionario, calcula la f
 | Servidores | Producción en Google Cloud a nombre del autor (4 vCPU, 16 GB RAM, 200 GB SSD) + NAS físico propio (2 × 4 TB RAID 1 + UPS) con copia cifrada diaria a las 2:00 a. m. |
 | Entradas | Correo central de PQRS (Gmail), radicación presencial (escáner → Google Drive), página web de la alcaldía, Facebook e Instagram; WhatsApp después |
 | OCR | Docling + Tesseract en español → Markdown |
-| IA | API de Claude (`claude-haiku-5-5`), solo clasificación |
+| IA | API de Claude (`claude-opus-5-5` por defecto, configurable), solo clasificación; respaldo por palabras clave |
 | Términos | Días hábiles sin festivos (Ley 1755 de 2015); fecha interna = día 10 de 15 |
 | Alertas | Pantalla completa en cada PC a las 8:00 y 14:00 + Google Calendar y Tasks |
 | Wi-Fi | Red abierta sin Internet; acceso por cédula + equipo aprobado en el panel; bloqueo por perfil con OPNsense + AdGuard Home |
