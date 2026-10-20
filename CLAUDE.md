@@ -19,10 +19,11 @@ Documentos clave (leer antes de cambiar algo grande):
 - `ventanilla-unica/plan-de-inicio.md`, `ventanilla-unica/preguntas.md`.
 
 ## Alcaldía piloto (datos reales conocidos)
-- 9 dependencias: Despacho del Alcalde, Gobierno, Hacienda, Planeación, Infraestructura, Contratación, Unidad de Servicios Públicos, Desarrollo, Bienes y Servicios. ~3 PC cada una, Windows 11.
+- 9 dependencias: Despacho del Alcalde, Gobierno, Hacienda, Planeación, Infraestructura, Contratación, Unidad de Servicios Públicos, Desarrollo Social y Económico, Bienes y Servicios (inventario). ~3 PC cada una, Windows 11.
+- Control Interno recibe los avisos de PQRS vencidas (no recibe PQRS).
 - Google Workspace. Internet: Colombia Más. Génesis en la nube del proveedor. Recaudo: Banco de Bogotá.
 - Jornadas 8:00–12:00 y 14:00–18:00.
-- Además: Concejo Municipal (secretaria de planta, control de sesiones y horario) y Personería. Son entidades independientes de la alcaldía.
+- Además: Concejo Municipal y Personería, entidades independientes. Se hace seguimiento solo a sus dos secretarias de planta (están en la nómina de la alcaldía). El Concejo tiene sesiones ordinarias (en los periodos de ley; el autor las llama "sincrónicas") y extraordinarias (fuera de esos periodos; "asincrónicas").
 
 ## Reglas que no se rompen
 1. **No usar datos reales** de la ventanilla, Génesis ni del Workspace de la alcaldía sin autorización escrita. Probar con datos ficticios o anonimizados.

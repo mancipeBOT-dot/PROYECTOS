@@ -115,7 +115,7 @@
    ]
   },
   {
-   "nombre": "Secretaría de Desarrollo",
+   "nombre": "Secretaría de Desarrollo Social y Económico",
    "palabras_clave": [
     "adulto mayor",
     "colombia mayor",
@@ -136,18 +136,19 @@
   {
    "nombre": "Secretaría de Bienes y Servicios",
    "palabras_clave": [
-    "almacen",
     "inventario",
+    "almacen",
     "bienes del municipio",
+    "bienes muebles",
+    "bienes inmuebles",
+    "activos",
+    "elementos",
+    "suministro",
+    "papeleria",
     "comodato",
-    "arrendamiento",
     "prestamo del salon",
     "prestamo del coliseo",
-    "parque automotor",
-    "vehiculo oficial",
-    "mantenimiento de las instalaciones",
-    "suministro",
-    "papeleria"
+    "baja de bienes"
    ]
   }
  ],
@@ -378,7 +379,7 @@
   {
    "id": "DE-1",
    "nombre": "Funcionario 1 — Desarrollo",
-   "dependencia": "Secretaría de Desarrollo",
+   "dependencia": "Secretaría de Desarrollo Social y Económico",
    "correo": "de1@alcaldia.ejemplo",
    "temas": [
     "adulto mayor",
@@ -388,7 +389,7 @@
   {
    "id": "DE-2",
    "nombre": "Funcionario 2 — Desarrollo",
-   "dependencia": "Secretaría de Desarrollo",
+   "dependencia": "Secretaría de Desarrollo Social y Económico",
    "correo": "de2@alcaldia.ejemplo",
    "temas": [
     "discapacidad",
@@ -399,7 +400,7 @@
   {
    "id": "DE-3",
    "nombre": "Funcionario 3 — Desarrollo",
-   "dependencia": "Secretaría de Desarrollo",
+   "dependencia": "Secretaría de Desarrollo Social y Económico",
    "correo": "de3@alcaldia.ejemplo",
    "temas": [
     "campesino",
@@ -414,10 +415,9 @@
    "dependencia": "Secretaría de Bienes y Servicios",
    "correo": "bs1@alcaldia.ejemplo",
    "temas": [
-    "almacen",
     "inventario",
-    "suministro",
-    "papeleria"
+    "almacen",
+    "suministro"
    ]
   },
   {
@@ -426,8 +426,8 @@
    "dependencia": "Secretaría de Bienes y Servicios",
    "correo": "bs2@alcaldia.ejemplo",
    "temas": [
+    "bienes inmuebles",
     "comodato",
-    "arrendamiento",
     "prestamo del salon",
     "prestamo del coliseo"
    ]
@@ -438,10 +438,15 @@
    "dependencia": "Secretaría de Bienes y Servicios",
    "correo": "bs3@alcaldia.ejemplo",
    "temas": [
-    "parque automotor",
-    "vehiculo oficial",
-    "mantenimiento de las instalaciones"
+    "bienes muebles",
+    "activos",
+    "baja de bienes"
    ]
   }
- ]
+ ],
+ "control_interno": {
+  "nombre": "Oficina de Control Interno",
+  "correo": "controlinterno@alcaldia.ejemplo",
+  "_nota": "Recibe los avisos de PQRS vencidas. No recibe PQRS."
+ }
 }

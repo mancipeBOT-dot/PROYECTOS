@@ -28,16 +28,39 @@
 | PQRS de prueba | El autor puede conseguir 10–20 anonimizadas |
 | Cuenta de Anthropic | Existe, con correo personal |
 | Trabajo siguiente | Desde Claude Code en el computador, con Claude in Chrome |
+| Página web | El autor tiene la dirección; acceso de usuario común |
+| Génesis y ventanilla | El autor tiene usuario; solo valida información; puede usar IA en sus actividades del contrato |
+| Desarrollo | Secretaría de Desarrollo Social y Económico |
+| Bienes y Servicios | Inventario |
+| Control Interno | Recibe los avisos de PQRS vencidas |
+| Concejo | Sesiones ordinarias ("sincrónicas", en los periodos de ley) y extraordinarias ("asincrónicas", fuera de ellos) |
+| Seguimiento en Concejo y Personería | Solo a las dos secretarias de planta, que están en la nómina de la alcaldía |
 
-## B. Pendientes
+## B. Pendientes — proceso de las PQRS (ronda actual)
 
+### Entrada
 1. ¿Cuál es la dirección web de la página de la alcaldía?
-2. ¿Qué dependencia recibe las tutelas y los traslados por competencia? ¿Hay asesor jurídico? (hoy el sistema los envía al Despacho del Alcalde)
-3. ¿Qué hace la Secretaría de Desarrollo: social, económico, agropecuario o todo?
-4. ¿Qué hace Bienes y Servicios: almacén, inventarios, préstamo de espacios, vehículos, mantenimiento?
-5. ¿Cuáles son los nombres oficiales exactos de las 9 dependencias?
-6. ¿Quién hace hoy el trabajo de Control Interno? (recibe los escalamientos de PQRS vencidas)
-7. Concejo: ¿qué son las sesiones "sincrónicas y asincrónicas" (presenciales y virtuales, ordinarias y extraordinarias)? ¿Qué se quiere controlar de la secretaria: horario, actas, asistencia, citaciones?
-8. Personería: ¿qué se quiere controlar? ¿PQRS, horario, otra cosa?
-9. ¿Quién autorizaría en el Concejo (presidente) y en la Personería (personero)?
-10. Fotos de la etiqueta del router y de los puntos de Wi-Fi.
+2. ¿Cuántas personas radican hoy en la ventanilla presencial y quién revisa el correo central?
+3. ¿El ciudadano recibe hoy una constancia con número de radicado? ¿En papel, por correo o ninguna?
+4. ¿Hay PQRS que llegan directo a una dependencia (en persona, a su correo o por teléfono) sin pasar por la ventanilla?
+
+### Asignación
+5. ¿Cuánto tarda hoy una PQRS desde que llega hasta que la dependencia la recibe? (horas, un día, varios días)
+6. Cuando una dependencia dice "esto no es mío", ¿qué hace hoy y quién la reasigna?
+7. Si una PQRS necesita respuesta de dos dependencias, ¿quién responde al ciudadano?
+8. Dentro de cada dependencia, ¿quién decide qué funcionario responde: el jefe o la secretaria?
+
+### Respuesta y cierre
+9. ¿Quién firma las respuestas: el jefe de cada dependencia o el alcalde?
+10. ¿Cómo se envía la respuesta al ciudadano y queda registrada en la ventanilla actual?
+11. ¿Usan prórrogas? ¿Quién las autoriza?
+
+### Personas y equipos
+12. ¿Cada funcionario tiene su propio correo de Google Workspace, o se comparte el correo de la dependencia?
+13. ¿Cada PC es de un solo funcionario o lo comparten varios?
+14. ¿Hay contratistas de prestación de servicios que respondan PQRS o usen esos PC?
+15. ¿Quién nombró a las secretarias del Concejo y de la Personería: el alcalde, la mesa directiva del Concejo o el personero?
+16. ¿Qué se quiere medir de esas dos secretarias: hora de llegada y salida, tiempos muertos en el PC, cumplimiento de tareas (actas, citaciones, correspondencia)?
+
+## C. Próxima ronda — estructura organizacional
+Organigrama, manual de funciones, quién es jefe de quién, cargos por dependencia, horarios especiales, contratistas por dependencia, procesos propios de cada dependencia.

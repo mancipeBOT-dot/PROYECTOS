@@ -86,14 +86,14 @@
  {
   "canal": "presencial",
   "dias_atras": 7,
-  "dependencia_esperada": "Secretaría de Desarrollo",
+  "dependencia_esperada": "Secretaría de Desarrollo Social y Económico",
   "tipo_esperado": "peticion_general",
   "texto": "Soy adulto mayor de 72 años y solicito ser incluido en el programa Colombia Mayor porque no tengo pensión ni ingresos."
  },
  {
   "canal": "correo",
   "dias_atras": 11,
-  "dependencia_esperada": "Secretaría de Desarrollo",
+  "dependencia_esperada": "Secretaría de Desarrollo Social y Económico",
   "tipo_esperado": "peticion_general",
   "texto": "Solicito información sobre el subsidio para personas con discapacidad. Mi hijo es menor de edad y tiene discapacidad motora. Correo: madre.ejemplo@correo.ejemplo"
  },
