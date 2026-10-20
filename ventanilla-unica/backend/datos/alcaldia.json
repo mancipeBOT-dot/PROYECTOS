@@ -1,5 +1,5 @@
 {
- "_nota": "Datos ficticios para el prototipo. Nombres de dependencias por confirmar; palabras clave por ajustar con el funcionario clave de cada dependencia. dependencia_juridica recibe tutelas y traslados por competencia (por confirmar).",
+ "_nota": "Datos ficticios para el prototipo. Nombres de dependencias por confirmar; palabras clave por ajustar con el funcionario clave de cada dependencia. dependencia_juridica recibe tutelas y traslados por competencia (por confirmar). Cada dependencia tiene un solo correo de trabajo, compartido por sus funcionarios.",
  "dependencia_juridica": "Despacho del Alcalde",
  "dependencias": [
   {
@@ -154,10 +154,18 @@
  ],
  "funcionarios": [
   {
+   "id": "DA-J",
+   "nombre": "Jefe — Despacho",
+   "dependencia": "Despacho del Alcalde",
+   "correo": "da@alcaldia.ejemplo",
+   "temas": [],
+   "es_jefe": true
+  },
+  {
    "id": "DA-1",
    "nombre": "Funcionario 1 — Despacho",
    "dependencia": "Despacho del Alcalde",
-   "correo": "da1@alcaldia.ejemplo",
+   "correo": "da@alcaldia.ejemplo",
    "temas": [
     "audiencia",
     "plan de desarrollo"
@@ -167,7 +175,7 @@
    "id": "DA-2",
    "nombre": "Funcionario 2 — Despacho",
    "dependencia": "Despacho del Alcalde",
-   "correo": "da2@alcaldia.ejemplo",
+   "correo": "da@alcaldia.ejemplo",
    "temas": [
     "tutela",
     "juzgado",
@@ -178,17 +186,25 @@
    "id": "DA-3",
    "nombre": "Funcionario 3 — Despacho",
    "dependencia": "Despacho del Alcalde",
-   "correo": "da3@alcaldia.ejemplo",
+   "correo": "da@alcaldia.ejemplo",
    "temas": [
     "traslado",
     "recurso de reposicion"
    ]
   },
   {
+   "id": "GO-J",
+   "nombre": "Jefe — Gobierno",
+   "dependencia": "Secretaría de Gobierno",
+   "correo": "go@alcaldia.ejemplo",
+   "temas": [],
+   "es_jefe": true
+  },
+  {
    "id": "GO-1",
    "nombre": "Funcionario 1 — Gobierno",
    "dependencia": "Secretaría de Gobierno",
-   "correo": "go1@alcaldia.ejemplo",
+   "correo": "go@alcaldia.ejemplo",
    "temas": [
     "espacio publico",
     "vendedores ambulantes",
@@ -199,7 +215,7 @@
    "id": "GO-2",
    "nombre": "Funcionario 2 — Gobierno",
    "dependencia": "Secretaría de Gobierno",
-   "correo": "go2@alcaldia.ejemplo",
+   "correo": "go@alcaldia.ejemplo",
    "temas": [
     "ruido",
     "establecimiento de comercio"
@@ -209,17 +225,25 @@
    "id": "GO-3",
    "nombre": "Funcionario 3 — Gobierno",
    "dependencia": "Secretaría de Gobierno",
-   "correo": "go3@alcaldia.ejemplo",
+   "correo": "go@alcaldia.ejemplo",
    "temas": [
     "comisaria de familia",
     "violencia intrafamiliar"
    ]
   },
   {
+   "id": "HA-J",
+   "nombre": "Jefe — Hacienda",
+   "dependencia": "Secretaría de Hacienda",
+   "correo": "ha@alcaldia.ejemplo",
+   "temas": [],
+   "es_jefe": true
+  },
+  {
    "id": "HA-1",
    "nombre": "Funcionario 1 — Hacienda",
    "dependencia": "Secretaría de Hacienda",
-   "correo": "ha1@alcaldia.ejemplo",
+   "correo": "ha@alcaldia.ejemplo",
    "temas": [
     "predial",
     "paz y salvo"
@@ -229,7 +253,7 @@
    "id": "HA-2",
    "nombre": "Funcionario 2 — Hacienda",
    "dependencia": "Secretaría de Hacienda",
-   "correo": "ha2@alcaldia.ejemplo",
+   "correo": "ha@alcaldia.ejemplo",
    "temas": [
     "industria y comercio",
     "ica"
@@ -239,7 +263,7 @@
    "id": "HA-3",
    "nombre": "Funcionario 3 — Hacienda",
    "dependencia": "Secretaría de Hacienda",
-   "correo": "ha3@alcaldia.ejemplo",
+   "correo": "ha@alcaldia.ejemplo",
    "temas": [
     "acuerdo de pago",
     "cobro coactivo",
@@ -247,10 +271,18 @@
    ]
   },
   {
+   "id": "PL-J",
+   "nombre": "Jefe — Planeación",
+   "dependencia": "Secretaría de Planeación",
+   "correo": "pl@alcaldia.ejemplo",
+   "temas": [],
+   "es_jefe": true
+  },
+  {
    "id": "PL-1",
    "nombre": "Funcionario 1 — Planeación",
    "dependencia": "Secretaría de Planeación",
-   "correo": "pl1@alcaldia.ejemplo",
+   "correo": "pl@alcaldia.ejemplo",
    "temas": [
     "licencia de construccion",
     "subdivision"
@@ -260,7 +292,7 @@
    "id": "PL-2",
    "nombre": "Funcionario 2 — Planeación",
    "dependencia": "Secretaría de Planeación",
-   "correo": "pl2@alcaldia.ejemplo",
+   "correo": "pl@alcaldia.ejemplo",
    "temas": [
     "uso del suelo",
     "nomenclatura",
@@ -271,7 +303,7 @@
    "id": "PL-3",
    "nombre": "Funcionario 3 — Planeación",
    "dependencia": "Secretaría de Planeación",
-   "correo": "pl3@alcaldia.ejemplo",
+   "correo": "pl@alcaldia.ejemplo",
    "temas": [
     "sisben",
     "estratificacion",
@@ -279,10 +311,18 @@
    ]
   },
   {
+   "id": "IN-J",
+   "nombre": "Jefe — Infraestructura",
+   "dependencia": "Secretaría de Infraestructura",
+   "correo": "in@alcaldia.ejemplo",
+   "temas": [],
+   "es_jefe": true
+  },
+  {
    "id": "IN-1",
    "nombre": "Funcionario 1 — Infraestructura",
    "dependencia": "Secretaría de Infraestructura",
-   "correo": "in1@alcaldia.ejemplo",
+   "correo": "in@alcaldia.ejemplo",
    "temas": [
     "via",
     "huecos",
@@ -293,7 +333,7 @@
    "id": "IN-2",
    "nombre": "Funcionario 2 — Infraestructura",
    "dependencia": "Secretaría de Infraestructura",
-   "correo": "in2@alcaldia.ejemplo",
+   "correo": "in@alcaldia.ejemplo",
    "temas": [
     "alumbrado publico",
     "luminaria"
@@ -303,7 +343,7 @@
    "id": "IN-3",
    "nombre": "Funcionario 3 — Infraestructura",
    "dependencia": "Secretaría de Infraestructura",
-   "correo": "in3@alcaldia.ejemplo",
+   "correo": "in@alcaldia.ejemplo",
    "temas": [
     "puente",
     "placa huella",
@@ -312,10 +352,18 @@
    ]
   },
   {
+   "id": "CO-J",
+   "nombre": "Jefe — Contratación",
+   "dependencia": "Oficina de Contratación",
+   "correo": "co@alcaldia.ejemplo",
+   "temas": [],
+   "es_jefe": true
+  },
+  {
    "id": "CO-1",
    "nombre": "Funcionario 1 — Contratación",
    "dependencia": "Oficina de Contratación",
-   "correo": "co1@alcaldia.ejemplo",
+   "correo": "co@alcaldia.ejemplo",
    "temas": [
     "contrato",
     "contratista",
@@ -326,7 +374,7 @@
    "id": "CO-2",
    "nombre": "Funcionario 2 — Contratación",
    "dependencia": "Oficina de Contratación",
-   "correo": "co2@alcaldia.ejemplo",
+   "correo": "co@alcaldia.ejemplo",
    "temas": [
     "licitacion",
     "secop",
@@ -338,16 +386,24 @@
    "id": "CO-3",
    "nombre": "Funcionario 3 — Contratación",
    "dependencia": "Oficina de Contratación",
-   "correo": "co3@alcaldia.ejemplo",
+   "correo": "co@alcaldia.ejemplo",
    "temas": [
     "interventoria"
    ]
   },
   {
+   "id": "SP-J",
+   "nombre": "Jefe — Servicios Públicos",
+   "dependencia": "Unidad de Servicios Públicos",
+   "correo": "sp@alcaldia.ejemplo",
+   "temas": [],
+   "es_jefe": true
+  },
+  {
    "id": "SP-1",
    "nombre": "Funcionario 1 — Servicios Públicos",
    "dependencia": "Unidad de Servicios Públicos",
-   "correo": "sp1@alcaldia.ejemplo",
+   "correo": "sp@alcaldia.ejemplo",
    "temas": [
     "factura",
     "medidor",
@@ -358,7 +414,7 @@
    "id": "SP-2",
    "nombre": "Funcionario 2 — Servicios Públicos",
    "dependencia": "Unidad de Servicios Públicos",
-   "correo": "sp2@alcaldia.ejemplo",
+   "correo": "sp@alcaldia.ejemplo",
    "temas": [
     "acueducto",
     "fuga",
@@ -369,7 +425,7 @@
    "id": "SP-3",
    "nombre": "Funcionario 3 — Servicios Públicos",
    "dependencia": "Unidad de Servicios Públicos",
-   "correo": "sp3@alcaldia.ejemplo",
+   "correo": "sp@alcaldia.ejemplo",
    "temas": [
     "aseo",
     "recoleccion de basuras",
@@ -377,10 +433,18 @@
    ]
   },
   {
+   "id": "DE-J",
+   "nombre": "Jefe — Desarrollo",
+   "dependencia": "Secretaría de Desarrollo Social y Económico",
+   "correo": "de@alcaldia.ejemplo",
+   "temas": [],
+   "es_jefe": true
+  },
+  {
    "id": "DE-1",
    "nombre": "Funcionario 1 — Desarrollo",
    "dependencia": "Secretaría de Desarrollo Social y Económico",
-   "correo": "de1@alcaldia.ejemplo",
+   "correo": "de@alcaldia.ejemplo",
    "temas": [
     "adulto mayor",
     "colombia mayor"
@@ -390,7 +454,7 @@
    "id": "DE-2",
    "nombre": "Funcionario 2 — Desarrollo",
    "dependencia": "Secretaría de Desarrollo Social y Económico",
-   "correo": "de2@alcaldia.ejemplo",
+   "correo": "de@alcaldia.ejemplo",
    "temas": [
     "discapacidad",
     "victimas",
@@ -401,7 +465,7 @@
    "id": "DE-3",
    "nombre": "Funcionario 3 — Desarrollo",
    "dependencia": "Secretaría de Desarrollo Social y Económico",
-   "correo": "de3@alcaldia.ejemplo",
+   "correo": "de@alcaldia.ejemplo",
    "temas": [
     "campesino",
     "agropecuario",
@@ -410,10 +474,18 @@
    ]
   },
   {
+   "id": "BS-J",
+   "nombre": "Jefe — Bienes y Servicios",
+   "dependencia": "Secretaría de Bienes y Servicios",
+   "correo": "bs@alcaldia.ejemplo",
+   "temas": [],
+   "es_jefe": true
+  },
+  {
    "id": "BS-1",
    "nombre": "Funcionario 1 — Bienes y Servicios",
    "dependencia": "Secretaría de Bienes y Servicios",
-   "correo": "bs1@alcaldia.ejemplo",
+   "correo": "bs@alcaldia.ejemplo",
    "temas": [
     "inventario",
     "almacen",
@@ -424,7 +496,7 @@
    "id": "BS-2",
    "nombre": "Funcionario 2 — Bienes y Servicios",
    "dependencia": "Secretaría de Bienes y Servicios",
-   "correo": "bs2@alcaldia.ejemplo",
+   "correo": "bs@alcaldia.ejemplo",
    "temas": [
     "bienes inmuebles",
     "comodato",
@@ -436,7 +508,7 @@
    "id": "BS-3",
    "nombre": "Funcionario 3 — Bienes y Servicios",
    "dependencia": "Secretaría de Bienes y Servicios",
-   "correo": "bs3@alcaldia.ejemplo",
+   "correo": "bs@alcaldia.ejemplo",
    "temas": [
     "bienes muebles",
     "activos",

@@ -33,7 +33,7 @@
 <body>
 
 <h1>Ventanilla Única Inteligente</h1>
-<div class="meta">Documento de funcionamiento · Versión 0.4 · 19 de octubre de 2026<br>Autor: Jaime Raúl López Mancipe · Software JRLM · Software de autoría propia, prestado como servicio a alcaldías municipales<br><b>Documento confidencial.</b></div>
+<div class="meta">Documento de funcionamiento · Versión 0.5 · 20 de octubre de 2026<br>Autor: Jaime Raúl López Mancipe · Software JRLM · Software de autoría propia, prestado como servicio a alcaldías municipales<br><b>Documento confidencial.</b></div>
 
 <h2>Contenido</h2>
 <ol class="toc">
@@ -48,7 +48,7 @@
   <li>Solicitudes internas entre dependencias</li>
   <li>Agente de actividad y tiempos muertos</li>
   <li>Wi-Fi por ID y bloqueo de páginas</li>
-  <li>Génesis, bancos y PSE</li>
+  <li>Génesis, inventarios, bancos y PSE</li>
   <li>Reportes</li>
   <li>Seguridad de la información</li>
   <li>Propiedad intelectual</li>
@@ -90,9 +90,14 @@
   <tr><th style="width:32%">Elemento</th><th>Situación</th></tr>
   <tr><td>Dependencias</td><td>9</td></tr>
   <tr><td>Computadores</td><td>~3 por dependencia → ~27 PC con Windows 11</td></tr>
-  <tr><td>Correo y calendario</td><td>Google Workspace. Cada dependencia tiene su correo; hay un correo central que recibe todas las PQRS</td></tr>
+  <tr><td>Correo y calendario</td><td>Google Workspace. Un correo de trabajo por dependencia (no por funcionario); un correo central recibe las PQRS y lo revisa normalmente una persona</td></tr>
   <tr><td>Ventanilla única</td><td>Página web: un funcionario escanea, sube y asigna la dependencia a mano. La dependencia recibe un correo con el PDF adjunto, sin enlace ni correo de respuesta del ciudadano</td></tr>
-  <tr><td>Entradas de PQRS</td><td>Correo central y radicación presencial</td></tr>
+  <tr><td>Entradas de PQRS</td><td>Correo central y radicación presencial (varias personas radican). Algunas PQRS llegan directo a una dependencia sin pasar por la ventanilla</td></tr>
+  <tr><td>Constancia al ciudadano</td><td>En papel o por correo electrónico</td></tr>
+  <tr><td>Tiempo de asignación hoy</td><td>1 a 2 días, con dos personas dedicadas</td></tr>
+  <tr><td>Reasignación</td><td>La dependencia la devuelve por competencia desde la ventanilla</td></tr>
+  <tr><td>Respuesta</td><td>La firma el jefe de cada dependencia y se envía por correo electrónico. No se usan prórrogas</td></tr>
+  <tr><td>Equipos</td><td>Cada PC es de una sola persona</td></tr>
   <tr><td>Escáner</td><td>Común, hoja por hoja</td></tr>
   <tr><td>Software financiero</td><td>Génesis (Hacienda: todos los recursos). La información está en la nube del proveedor</td></tr>
   <tr><td>Servicios públicos</td><td>Dependencia de la alcaldía</td></tr>
@@ -100,7 +105,7 @@
   <tr><td>Página web y redes sociales</td><td>Las administra la misma persona</td></tr>
   <tr><td>Recaudo</td><td>Banco de Bogotá, PSE</td></tr>
   <tr><td>Jornadas</td><td>8:00–12:00 y 14:00–18:00</td></tr>
-  <tr><td>Control Interno</td><td>No hace hoy el seguimiento a PQRS</td></tr>
+  <tr><td>Control Interno</td><td>Recibe los avisos de PQRS vencidas</td></tr>
   <tr><td>Solicitudes de contratación y recursos</td><td>Se hacen en persona, sin trazabilidad</td></tr>
   <tr><td>Accesos del autor</td><td>Ventanilla (uso completo), Génesis (consulta completa), funcionarios que usan la ventanilla, funcionario clave de cada dependencia, posible acceso al administrador de Google Workspace</td></tr>
 </table>
@@ -216,9 +221,13 @@
 <ul>
   <li>Días hábiles: lunes a viernes sin festivos de Colombia. El conteo empieza el día hábil siguiente a la radicación.</li>
   <li><b>Fecha interna = día hábil 10 de 15</b>, para dejar 5 días de revisión y firma.</li>
-  <li><b>Funcionario:</b> dentro de la dependencia, el de menor número de PQRS abiertas en ese tema.</li>
+  <li><b>Funcionario:</b> el sistema propone, dentro de la dependencia, al que maneja el tema; si hay empate, al de menos PQRS abiertas. El jefe no recibe PQRS automáticamente.</li>
+  <li><b>Aprobación del jefe:</b> el jefe ve las asignaciones pendientes de su dependencia y acepta o cambia el funcionario. La PQRS aparece en el plan del funcionario propuesto desde el primer momento, para no perder días.</li>
+  <li><b>Devolución por competencia:</b> si la dependencia dice "no es mía", indica el motivo y la PQRS vuelve al asignador. Los términos no se reinician. El sistema registra qué dependencias la devolvieron.</li>
+  <li><b>Varias dependencias:</b> responde la primera dependencia asignada si tiene competencia.</li>
+  <li><b>PQRS que llegan directo a una dependencia:</b> el correo de cada dependencia reenvía al correo central las que traen la palabra "PQRS" o "derecho de petición" (regla de Gmail), y el panel tiene un botón para radicar las entregadas en persona.</li>
   <li><b>Plan diario:</b> las PQRS de cada funcionario se reparten entre los días hasta la fecha interna, en bloque de mañana (8:00–12:00) y de tarde (14:00–18:00).</li>
-  <li><b>Tutela:</b> va a Jurídica con alerta inmediata.</li>
+  <li><b>Tutela:</b> va a la dependencia que maneja lo jurídico (hoy, Despacho del Alcalde; por confirmar) con alerta inmediata.</li>
   <li><b>Sin competencia de la alcaldía:</b> alerta para trasladar a la entidad competente dentro de 5 días (Ley 1755, art. 21).</li>
 </ul>
 
@@ -226,10 +235,11 @@
 <table>
   <tr><th style="width:24%">Elemento</th><th>Funcionamiento</th></tr>
   <tr><td>Alerta de jornada</td><td>Pantalla completa en cada PC a las 8:00 y a las 14:00, o en el primer inicio de sesión después de esa hora. Muestra: PQRS del bloque, en rojo (vencen en ≤ 3 días hábiles), amarillo (en curso) y verde (nuevas). Se cierra con el botón "Entendido", que queda registrado.</td></tr>
-  <tr><td>Google Calendar</td><td>Un evento por PQRS en el calendario del funcionario, en el bloque asignado.</td></tr>
+  <tr><td>Google Calendar</td><td>Como el correo es por dependencia, se usa <b>un calendario por dependencia</b>; cada evento lleva el nombre del funcionario responsable y el bloque asignado.</td></tr>
+  <tr><td>Constancia de radicado</td><td>Correo automático al ciudadano con el número de radicado y la fecha límite. Es un mensaje fijo, no una respuesta.</td></tr>
   <tr><td>Google Tasks</td><td>Checklist diario por funcionario y por dependencia.</td></tr>
   <tr><td>Escalamiento</td><td>3 días hábiles antes del vencimiento sin cerrar → correo y alerta al jefe de dependencia. Vencida → alerta a Control Interno.</td></tr>
-  <tr><td>Cierre</td><td>El funcionario marca la PQRS como respondida y registra el número del oficio de salida y la fecha de envío.</td></tr>
+  <tr><td>Cierre</td><td>La respuesta la firma el jefe y se envía desde el correo de la dependencia con el número de radicado en el asunto. El sistema detecta ese correo enviado y cierra la PQRS; si no lo detecta, el funcionario la cierra a mano con el número de oficio.</td></tr>
   <tr><td>Consulta ciudadana</td><td>El ciudadano consulta en la página web el estado por radicado: radicada, asignada a [dependencia], respondida.</td></tr>
 </table>
 
@@ -241,13 +251,14 @@
 <ol>
   <li>La dependencia envía un correo a un buzón único de solicitudes con asunto estándar: <code>[CDP] Secretaría X - objeto</code>.</li>
   <li>El sistema la radica, adjunta los documentos y crea el expediente.</li>
-  <li>Ruta: dependencia → Hacienda (CDP) → Jurídica (contrato) → Hacienda (RP) → pago.</li>
+  <li>Ruta: dependencia → Hacienda (CDP) → Contratación (contrato) → Hacienda (RP) → pago.</li>
   <li>Cada paso registra responsable, fecha de entrada, fecha de salida y estado. Quien solicita ve en qué paso va.</li>
   <li>Cada paso pendiente aparece en el checklist diario del responsable.</li>
 </ol>
 
 <h2>10. Agente de actividad y tiempos muertos</h2>
-<p>Programa instalado en los 27 PC con Windows 11. Es el mismo programa que muestra las alertas de jornada.</p>
+<p>Programa instalado en los PC con Windows 11. Es el mismo programa que muestra las alertas de jornada. Cada PC es de una sola persona, así que el equipo identifica al funcionario.</p>
+<p><b>Solo personal de planta.</b> A los contratistas de prestación de servicios no se les mide horario ni actividad: no tienen subordinación y medirles horario puede configurar una relación laboral. En sus PC solo se instalan las alertas de PQRS.</p>
 <table>
   <tr><th style="width:28%">Dato</th><th>Cómo se obtiene</th></tr>
   <tr><td>Inicio de labores</td><td>Primer inicio de sesión o desbloqueo del día. Antes de eso no se mide nada.</td></tr>
@@ -258,6 +269,8 @@
 </table>
 <p><b>No registra teclas, no toma capturas de pantalla, no lee documentos ni correos.</b> Solo metadatos.</p>
 <p><b>Reportes:</b> diario por funcionario (hora de inicio, tiempo activo, tiempo muerto, % en aplicaciones asignadas) y semanal por dependencia (promedios y comparación).</p>
+<h3>Secretarias del Concejo y de la Personería</h3>
+<p>Son de planta y las nombró el alcalde, así que la misma resolución las cubre. Se mide: hora de llegada y salida, tiempos muertos y cumplimiento de tareas: actas de sesión (ordinarias y extraordinarias), citaciones, correspondencia y PQRS.</p>
 <p><b>Antes de instalarlo:</b> resolución firmada por el alcalde que adopta la medida y su finalidad; política de tratamiento de datos y aviso a cada funcionario (Ley 1581 de 2012); socialización con los funcionarios. El reporte es insumo de evaluación, no sanción automática.</p>
 
 <h2>11. Wi-Fi por ID y bloqueo de páginas</h2>
@@ -286,7 +299,7 @@
 <div class="warn"><b>Limitaciones.</b> Android 10+ e iOS 14+ cambian la MAC por red: al registrar el celular hay que desactivar "dirección privada" para la red institucional. La MAC se puede copiar; por eso Hacienda y Tesorería van por cable. Con datos móviles propios no hay control.</div>
 <p>Equipo en la alcaldía: mini PC con 4 puertos de red y 8 GB de RAM. Los puntos de acceso Wi-Fi existentes se configuran con una sola red abierta conectada a ese equipo.</p>
 
-<h2>12. Génesis, bancos y PSE</h2>
+<h2>12. Génesis, inventarios, bancos y PSE</h2>
 <h3>Génesis</h3>
 <p>La información de Génesis está en la nube del proveedor, así que la conexión depende de él. Siempre <b>solo de lectura</b>, solicitada por la alcaldía al proveedor y con un usuario propio del sistema (no con las credenciales personales del autor). Por orden de preferencia:</p>
 <ol>
@@ -295,6 +308,20 @@
   <li>Si no hay ninguna de las dos: Hacienda descarga los reportes y los sube a esa carpeta una vez al día.</li>
 </ol>
 <p>Datos: liquidaciones y pagos de Predial e ICA, cartera morosa, facturación de servicios públicos, ejecución presupuestal (CDP, RP, obligaciones, pagos).</p>
+<h3>Inventarios (Bienes y Servicios)</h3>
+<p>Bienes y Servicios se dedica al inventario. El sistema registra cada entrada y salida del almacén y deja claro qué es gasto y qué es activo de la alcaldía.</p>
+<table>
+  <tr><th style="width:22%">Tipo de bien</th><th style="width:26%">Al entrar al almacén</th><th style="width:26%">Al salir</th><th>Después</th></tr>
+  <tr><td><b>Consumo</b> (papelería, aseo, repuestos)</td><td>Inventario de materiales y suministros</td><td><b>Gasto</b> de la dependencia que lo recibe</td><td>Desaparece del inventario</td></tr>
+  <tr><td><b>Devolutivo</b> (computadores, muebles, vehículos)</td><td>Bienes en bodega</td><td><b>Activo</b> en servicio, con placa, dependencia y responsable</td><td>Depreciación mensual; traslados de responsable; sale solo con acta de baja</td></tr>
+</table>
+<ul>
+  <li>Valoración por costo promedio ponderado. Cada entrada exige soporte: factura, contrato o acta.</li>
+  <li>Para un elemento nuevo, el sistema sugiere el tipo: devolutivo si dura más de 12 meses y supera el valor mínimo de la política contable de la alcaldía; si no, consumo.</li>
+  <li>Reportes: gasto por dependencia, activos por dependencia y responsable, saldo del almacén.</li>
+  <li>Las cuentas contables se toman del plan de cuentas que maneja Génesis.</li>
+</ul>
+<p>Es el modelo para el resto: cada dependencia ve su gasto y sus activos, y el ordenador del gasto ve el total.</p>
 <h3>PSE con el Banco de Bogotá</h3>
 <ol>
   <li>El sistema genera el recibo con código de barras GS1-128 (estándar de recaudo bancario en Colombia).</li>
@@ -321,7 +348,7 @@
   <tr><td>Cifrado en tránsito</td><td>HTTPS en todo: navegador, agente de PC, equipo de red</td></tr>
   <tr><td>Cifrado en reposo</td><td>Disco del servidor y copias del NAS cifrados con llaves del autor</td></tr>
   <tr><td>Acceso al servidor</td><td>Solo el autor, con llave SSH y verificación en dos pasos. Solo el puerto HTTPS abierto al público</td></tr>
-  <tr><td>Acceso al sistema</td><td>Ingreso con la cuenta de Google de la alcaldía de cada funcionario. Cada uno ve solo su dependencia; los secretarios su secretaría; el ordenador del gasto todo</td></tr>
+  <tr><td>Acceso al sistema</td><td>Usuario y contraseña propios del sistema por funcionario, con verificación en dos pasos (el correo de Google es por dependencia, no por persona). Cada uno ve solo su dependencia; los jefes su dependencia; el ordenador del gasto todo</td></tr>
   <tr><td>Bitácora</td><td>Quién vio, cambió, reasignó o descargó cada documento, con fecha y hora</td></tr>
   <tr><td>Datos personales</td><td>La alcaldía es responsable y el autor es encargado del tratamiento (Ley 1581 de 2012), con acuerdo firmado</td></tr>
   <tr><td>IA</td><td>Solo recibe el texto necesario para clasificar. La API de Claude no usa esos datos para entrenar</td></tr>
@@ -380,8 +407,9 @@
   <li>Marca y modelo del router y de los puntos de acceso Wi-Fi (fotos de la etiqueta).</li>
   <li>Qué reportes exporta Génesis y si ofrece API.</li>
   <li>Qué dependencia recibe tutelas y traslados por competencia.</li>
-  <li>Qué hacen Desarrollo y Bienes y Servicios, y nombres exactos de las 9 dependencias.</li>
-  <li>Qué se necesita controlar del Concejo y la Personería.</li>
+  <li>Política contable de la alcaldía para inventarios (valor mínimo para que un bien sea activo) y si Génesis tiene módulo de almacén.</li>
+  <li>Plazos de las tareas de la secretaria del Concejo (actas, citaciones).</li>
+  <li>Estructura organizacional: organigrama, jefes, cargos de planta y contratistas por dependencia.</li>
 </ol>
 <p>Lista completa de preguntas: <code>preguntas.md</code>. Información a reunir: <code>plan-de-inicio.md</code>. Protección del autor: <code>propiedad-intelectual.md</code>.</p>
 

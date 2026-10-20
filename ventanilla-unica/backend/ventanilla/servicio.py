@@ -76,7 +76,45 @@ class Ventanilla:
         p.clasificacion.dependencia = dependencia
         funcionario = elegir_funcionario(self.catalogo, dependencia, p.texto, self._carga())
         p.funcionario_id = funcionario.id if funcionario else None
+        p.aprobada_por_jefe = False
         p.estado = Estado.ASIGNADA
+        return p
+
+    def aprobar(self, radicado: str, jefe_id: str, funcionario_id: str | None = None) -> PQRS:
+        """El jefe acepta el funcionario que propuso el sistema o elige otro de su dependencia.
+
+        La PQRS ya aparece en el plan del funcionario propuesto desde que se asigna;
+        la aprobación no detiene el conteo de términos.
+        """
+        p = self.obtener(radicado)
+        jefe = self.catalogo.funcionario(jefe_id)
+        if jefe is None or not jefe.es_jefe or jefe.dependencia != p.clasificacion.dependencia:
+            raise ErrorVentanilla("Solo el jefe de la dependencia asignada puede aprobar")
+        if funcionario_id is not None:
+            elegido = self.catalogo.funcionario(funcionario_id)
+            if elegido is None or elegido.dependencia != jefe.dependencia:
+                raise ErrorVentanilla("El funcionario debe ser de la misma dependencia")
+            p.funcionario_id = funcionario_id
+        p.aprobada_por_jefe = True
+        return p
+
+    def pendientes_de_aprobacion(self, dependencia: str) -> list[PQRS]:
+        return [
+            p for p in self.abiertas()
+            if p.clasificacion.dependencia == dependencia and p.estado == Estado.ASIGNADA and not p.aprobada_por_jefe
+        ]
+
+    def devolver_por_competencia(self, radicado: str, motivo: str) -> PQRS:
+        """La dependencia indica que la PQRS no es suya. Vuelve al asignador, que la reasigna.
+
+        Los términos no se reinician: siguen contando desde la radicación.
+        """
+        p = self.obtener(radicado)
+        p.dependencias_devueltas.append(p.clasificacion.dependencia)
+        p.clasificacion.asunto = f"{p.clasificacion.asunto} [Devuelta: {motivo}]"
+        p.estado = Estado.REVISION
+        p.funcionario_id = None
+        p.aprobada_por_jefe = False
         return p
 
     def cerrar(self, radicado: str, oficio_salida: str, fecha: date | None = None) -> PQRS:

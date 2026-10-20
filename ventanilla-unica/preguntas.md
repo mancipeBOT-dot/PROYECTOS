@@ -34,33 +34,44 @@
 | Bienes y Servicios | Inventario |
 | Control Interno | Recibe los avisos de PQRS vencidas |
 | Concejo | Sesiones ordinarias ("sincrónicas", en los periodos de ley) y extraordinarias ("asincrónicas", fuera de ellos) |
-| Seguimiento en Concejo y Personería | Solo a las dos secretarias de planta, que están en la nómina de la alcaldía |
+| Seguimiento en Concejo y Personería | Solo a las dos secretarias de planta, nombradas por el alcalde. Se mide llegada, salida, tiempos muertos y tareas: actas, citaciones, correspondencia y PQRS |
+| Bienes y Servicios | Solo inventario: entradas y salidas; consumo → gasto, devolutivo → activo de la alcaldía |
+| Correo central | Lo revisa normalmente una persona |
+| Radicación presencial | La hacen varias personas |
+| Constancia al ciudadano | En papel o por correo |
+| PQRS directas | Algunas llegan a la dependencia sin pasar por la ventanilla |
+| Tiempo de asignación hoy | 1 a 2 días, con dos personas dedicadas |
+| Reasignación | La dependencia la devuelve por competencia desde la ventanilla |
+| Varias dependencias | Responde la primera que la recibe si tiene competencia |
+| Asignación interna | Hoy decide el jefe; se quiere que la IA proponga y el jefe apruebe |
+| Firma y envío | Firma el jefe de cada dependencia; se envía por correo electrónico |
+| Prórrogas | No se usan |
+| Correo de Workspace | Uno por dependencia, no por funcionario |
+| PC | Cada uno de una sola persona |
+| Contratistas | Existen; el seguimiento de horario se hace solo a personal de planta |
 
-## B. Pendientes — proceso de las PQRS (ronda actual)
+## B. Pendientes — estructura organizacional (ronda actual)
 
-### Entrada
-1. ¿Cuál es la dirección web de la página de la alcaldía?
-2. ¿Cuántas personas radican hoy en la ventanilla presencial y quién revisa el correo central?
-3. ¿El ciudadano recibe hoy una constancia con número de radicado? ¿En papel, por correo o ninguna?
-4. ¿Hay PQRS que llegan directo a una dependencia (en persona, a su correo o por teléfono) sin pasar por la ventanilla?
+### Organigrama y cargos
+1. ¿Existe organigrama y manual de funciones? ¿Están publicados en la página web?
+2. Por dependencia: ¿cuántos funcionarios de planta y cuántos contratistas hay?
+3. ¿Cada dependencia tiene un solo jefe, o hay coordinadores o profesionales que reparten trabajo?
+4. ¿Quién es el ordenador del gasto: el alcalde, o hay secretarios con delegación?
+5. ¿Quién maneja lo jurídico (tutelas, demandas, traslados): asesor jurídico de planta, contratista o el Despacho?
+6. ¿Control Interno es una persona de planta? ¿De quién depende?
 
-### Asignación
-5. ¿Cuánto tarda hoy una PQRS desde que llega hasta que la dependencia la recibe? (horas, un día, varios días)
-6. Cuando una dependencia dice "esto no es mío", ¿qué hace hoy y quién la reasigna?
-7. Si una PQRS necesita respuesta de dos dependencias, ¿quién responde al ciudadano?
-8. Dentro de cada dependencia, ¿quién decide qué funcionario responde: el jefe o la secretaria?
+### Horarios y novedades
+7. ¿Hay funcionarios con horario distinto a 8–12 y 14–18 (turnos, medio tiempo, trabajo de campo)?
+8. ¿Cómo se registran hoy vacaciones, permisos e incapacidades? Sin eso el sistema contaría tiempo muerto a quien no está.
+9. ¿Hay funcionarios que trabajan fuera de la oficina (inspectores, Infraestructura en obra)? ¿Cómo se mide su trabajo?
 
-### Respuesta y cierre
-9. ¿Quién firma las respuestas: el jefe de cada dependencia o el alcalde?
-10. ¿Cómo se envía la respuesta al ciudadano y queda registrada en la ventanilla actual?
-11. ¿Usan prórrogas? ¿Quién las autoriza?
+### Inventarios
+10. ¿La alcaldía tiene política contable con un valor mínimo para que un bien sea activo? ¿Cuál es?
+11. ¿Génesis tiene módulo de almacén o inventarios, o se lleva en Excel?
+12. ¿Los bienes devolutivos tienen placa? ¿Hay inventario físico actualizado?
+13. ¿Quién recibe en almacén lo que llega de un contrato y quién firma la salida?
 
-### Personas y equipos
-12. ¿Cada funcionario tiene su propio correo de Google Workspace, o se comparte el correo de la dependencia?
-13. ¿Cada PC es de un solo funcionario o lo comparten varios?
-14. ¿Hay contratistas de prestación de servicios que respondan PQRS o usen esos PC?
-15. ¿Quién nombró a las secretarias del Concejo y de la Personería: el alcalde, la mesa directiva del Concejo o el personero?
-16. ¿Qué se quiere medir de esas dos secretarias: hora de llegada y salida, tiempos muertos en el PC, cumplimiento de tareas (actas, citaciones, correspondencia)?
-
-## C. Próxima ronda — estructura organizacional
-Organigrama, manual de funciones, quién es jefe de quién, cargos por dependencia, horarios especiales, contratistas por dependencia, procesos propios de cada dependencia.
+### Concejo y Personería
+14. ¿En qué plazo debe estar lista un acta después de cada sesión?
+15. ¿Con cuántos días de anticipación se envían las citaciones?
+16. ¿La correspondencia del Concejo y de la Personería entra por la misma ventanilla de la alcaldía?

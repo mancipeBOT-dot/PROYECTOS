@@ -12,7 +12,8 @@ Copyright © 2026 Jaime Raúl López Mancipe. Todos los derechos reservados. Ver
 | Asignación al funcionario del tema o al de menor carga | `ventanilla/asignacion.py` |
 | Plan diario por jornada (mañana / tarde) | `ventanilla/asignacion.py` |
 | Alerta de inicio de jornada y escalamiento (jefe / Control Interno) | `ventanilla/asignacion.py` |
-| Flujo completo: radicar → revisar → asignar → cerrar | `ventanilla/servicio.py` |
+| Flujo completo: radicar → revisar → asignar → aprobación del jefe → devolución por competencia → cerrar | `ventanilla/servicio.py` |
+| Inventarios: entradas, salidas, gasto, activos, depreciación, bajas | `ventanilla/inventario.py` |
 | API web | `ventanilla/api.py` |
 | Piloto simulado con 22 PQRS ficticias | `ventanilla/simulacion.py` |
 

@@ -26,6 +26,15 @@ class Cierre(BaseModel):
     oficio_salida: str
 
 
+class Aprobacion(BaseModel):
+    jefe_id: str
+    funcionario_id: str | None = None  # vacío = acepta el funcionario propuesto
+
+
+class Devolucion(BaseModel):
+    motivo: str
+
+
 def crear_ventanilla() -> Ventanilla:
     catalogo = Catalogo.desde_archivo()
     # La IA se activa con VUI_USAR_IA=1 y credenciales de la API de Claude.
@@ -62,6 +71,23 @@ def crear_app(ventanilla: Ventanilla | None = None) -> FastAPI:
             return vu.confirmar(radicado, datos.dependencia)
         except ErrorVentanilla as error:
             raise HTTPException(422, str(error))
+
+    @app.post("/pqrs/{radicado}/aprobar", response_model=PQRS)
+    def aprobar(radicado: str, datos: Aprobacion):
+        buscar(radicado)
+        try:
+            return vu.aprobar(radicado, datos.jefe_id, datos.funcionario_id)
+        except ErrorVentanilla as error:
+            raise HTTPException(403, str(error))
+
+    @app.post("/pqrs/{radicado}/devolver", response_model=PQRS)
+    def devolver(radicado: str, datos: Devolucion):
+        buscar(radicado)
+        return vu.devolver_por_competencia(radicado, datos.motivo)
+
+    @app.get("/dependencias/{dependencia}/pendientes", response_model=list[PQRS])
+    def pendientes(dependencia: str):
+        return vu.pendientes_de_aprobacion(dependencia)
 
     @app.post("/pqrs/{radicado}/cerrar", response_model=PQRS)
     def cerrar(radicado: str, datos: Cierre):

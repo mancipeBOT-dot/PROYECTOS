@@ -62,6 +62,8 @@ class Funcionario(BaseModel):
     correo: str
     temas: list[str] = []
     activo: bool = True
+    es_jefe: bool = False  # el jefe aprueba asignaciones; no recibe PQRS automáticamente
+    planta: bool = True  # solo al personal de planta se le mide horario y actividad
 
 
 class PQRS(BaseModel):
@@ -74,5 +76,7 @@ class PQRS(BaseModel):
     funcionario_id: str | None = None
     vencimiento_legal: date
     fecha_interna: date
+    aprobada_por_jefe: bool = False
+    dependencias_devueltas: list[str] = []  # dependencias que dijeron "no es de mi competencia"
     oficio_salida: str = ""
     fecha_cierre: date | None = None

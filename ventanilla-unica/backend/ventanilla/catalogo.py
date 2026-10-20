@@ -28,7 +28,11 @@ class Catalogo:
         return [d.nombre for d in self.dependencias]
 
     def funcionarios_de(self, dependencia: str) -> list[Funcionario]:
-        return [f for f in self.funcionarios if f.dependencia == dependencia and f.activo]
+        """Funcionarios que reciben PQRS (sin el jefe)."""
+        return [f for f in self.funcionarios if f.dependencia == dependencia and f.activo and not f.es_jefe]
+
+    def jefe_de(self, dependencia: str) -> Funcionario | None:
+        return next((f for f in self.funcionarios if f.dependencia == dependencia and f.es_jefe and f.activo), None)
 
     def funcionario(self, funcionario_id: str) -> Funcionario | None:
         return next((f for f in self.funcionarios if f.id == funcionario_id), None)

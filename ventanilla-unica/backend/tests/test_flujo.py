@@ -67,3 +67,42 @@ def test_api_radicar_y_consulta_ciudadano(ventanilla):
     assert "texto" not in consulta  # el ciudadano no ve datos internos
     assert cliente.get("/consulta/VU-2026-999999").status_code == 404
     assert cliente.get("/funcionarios/SP-1/alerta", params={"bloque": "tarde"}).status_code == 200
+
+
+def test_jefe_no_recibe_pqrs_y_aprueba_o_cambia(ventanilla):
+    p = ventanilla.radicar("Paz y salvo del impuesto predial", Canal.CORREO, LUNES)
+    assert p.funcionario_id != "HA-J" and not p.aprobada_por_jefe
+    assert ventanilla.pendientes_de_aprobacion("Secretaría de Hacienda") == [p]
+    ventanilla.aprobar(p.radicado, "HA-J", funcionario_id="HA-3")
+    assert p.funcionario_id == "HA-3" and p.aprobada_por_jefe
+    assert ventanilla.pendientes_de_aprobacion("Secretaría de Hacienda") == []
+
+
+def test_solo_el_jefe_de_la_dependencia_aprueba(ventanilla):
+    import pytest
+
+    from ventanilla.servicio import ErrorVentanilla
+
+    p = ventanilla.radicar("Paz y salvo del impuesto predial", Canal.CORREO, LUNES)
+    with pytest.raises(ErrorVentanilla):
+        ventanilla.aprobar(p.radicado, "PL-J")  # jefe de otra dependencia
+    with pytest.raises(ErrorVentanilla):
+        ventanilla.aprobar(p.radicado, "HA-1")  # no es jefe
+
+
+def test_devolucion_por_competencia_mantiene_terminos(ventanilla):
+    p = ventanilla.radicar("Paz y salvo del impuesto predial", Canal.CORREO, LUNES)
+    vencimiento = p.vencimiento_legal
+    ventanilla.devolver_por_competencia(p.radicado, "El predio es de otro municipio")
+    assert p.estado == Estado.REVISION and p.dependencias_devueltas == ["Secretaría de Hacienda"]
+    ventanilla.confirmar(p.radicado, "Despacho del Alcalde")
+    assert p.vencimiento_legal == vencimiento
+
+
+def test_api_aprobar_y_devolver(ventanilla):
+    cliente = TestClient(crear_app(ventanilla))
+    radicado = cliente.post("/pqrs", json={"texto": "Paz y salvo del impuesto predial", "canal": "correo"}).json()["radicado"]
+    assert len(cliente.get("/dependencias/Secretaría de Hacienda/pendientes").json()) == 1
+    assert cliente.post(f"/pqrs/{radicado}/aprobar", json={"jefe_id": "PL-J"}).status_code == 403
+    assert cliente.post(f"/pqrs/{radicado}/aprobar", json={"jefe_id": "HA-J"}).json()["aprobada_por_jefe"]
+    assert cliente.post(f"/pqrs/{radicado}/devolver", json={"motivo": "No es predial"}).json()["estado"] == "revision"
