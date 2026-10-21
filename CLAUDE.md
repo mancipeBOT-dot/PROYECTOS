@@ -37,7 +37,7 @@ Documentos clave (leer antes de cambiar algo grande):
 ## Código: `ventanilla-unica/backend/` (Python)
 ```bash
 cd ventanilla-unica/backend
-python -m venv .venv && .venv/bin/pip install -e ".[dev]"   # en Windows: .venv\Scripts\pip
+python -m venv .venv && .venv/bin/pip install -e ".[dev,ocr]"   # en Windows: .venv\Scripts\pip
 .venv/bin/python -m pytest
 .venv/bin/python -m ventanilla.simulacion        # agregar --ia para usar la API de Claude
 ```
@@ -46,7 +46,7 @@ python -m venv .venv && .venv/bin/pip install -e ".[dev]"   # en Windows: .venv\
 - Almacenamiento en memoria (prototipo). Pendiente: PostgreSQL.
 
 ## Siguientes pasos
-1. OCR con Docling y lectura de la carpeta de Google Drive / correo central (Gmail).
+1. Lectura del correo central (Gmail). Hecho: OCR (`ventanilla/ocr.py`, pypdf + Docling/EasyOCR) y carpeta de escaneos (`ventanilla/entrada.py`).
 2. Probar la clasificación con IA real usando 10–20 PQRS anonimizadas.
 3. Base de datos PostgreSQL y panel web.
 4. Agente de Windows (alertas de jornada).

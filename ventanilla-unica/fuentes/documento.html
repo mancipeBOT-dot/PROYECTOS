@@ -149,7 +149,7 @@
   <tr><td>Archivos</td><td>MinIO</td><td>PDF originales y Markdown</td></tr>
   <tr><td>Orquestación</td><td>n8n (instalado en el servidor)</td><td>Lectura de Gmail y Drive, redes sociales, Calendar, tareas programadas</td></tr>
   <tr><td>Backend</td><td>Python + FastAPI</td><td>Reglas de negocio: términos, asignación, reportes, Wi-Fi</td></tr>
-  <tr><td>OCR</td><td>Docling + Tesseract (español)</td><td>PDF escaneado → Markdown</td></tr>
+  <tr><td>OCR</td><td>pypdf + Docling con EasyOCR (español)</td><td>PDF con texto: lectura directa, sin OCR. PDF escaneado o imagen: OCR → Markdown. Se instala solo con pip</td></tr>
   <tr><td>IA</td><td>API de Claude (<code>claude-opus-5-5</code> por defecto, configurable)</td><td>Solo clasificación; si falla, clasificador por palabras clave</td></tr>
   <tr><td>Panel web</td><td>React</td><td>Asignador, funcionarios, secretarios, ordenador del gasto, administración del Wi-Fi</td></tr>
   <tr><td>Agente de PC</td><td>Python compilado (.exe), Windows 11</td><td>Alertas y actividad</td></tr>
@@ -172,7 +172,8 @@
 <h2>6. Procesamiento: radicado, OCR e IA</h2>
 <ol>
   <li><b>Radicado único.</b> Número consecutivo, fecha y hora de llegada y canal. El PDF original se guarda sin modificar como prueba documental.</li>
-  <li><b>OCR.</b> Docling convierte el PDF a Markdown. Una página en Markdown usa unos 700–900 tokens; la misma página como imagen, unos 1.600. Si una página no se lee bien (manuscrito, sello), solo esa página se envía como imagen.</li>
+  <li><b>OCR.</b> Si el PDF ya trae texto (los que llegan por correo), se lee directo, sin OCR. Si es un escaneo o una imagen, Docling con EasyOCR en español lo convierte a Markdown. Una página en Markdown usa unos 700–900 tokens; la misma página como imagen, unos 1.600. Pendiente: enviar como imagen a la IA solo las páginas que el OCR no lea bien (manuscritos, sellos).</li>
+  <li><b>Carpeta de escaneos.</b> El sistema revisa la carpeta de Google Drive para escritorio, espera 10 segundos a que Drive termine de copiar cada archivo, lo radica y lo mueve a "Procesados" con el número de radicado como nombre. Si no se puede leer, lo mueve a "Errores" y sigue con los demás.</li>
   <li><b>Clasificación.</b> La IA recibe el Markdown y la tabla de palabras clave por dependencia. Devuelve:</li>
 </ol>
 <pre>{

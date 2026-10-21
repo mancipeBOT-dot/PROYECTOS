@@ -28,7 +28,7 @@ Asigna automáticamente las PQRS a la dependencia y al funcionario, calcula la f
 | Modelo | Proyecto personal; la alcaldía contrata el servicio (licencia de uso), no el desarrollo |
 | Servidores | Producción en Google Cloud a nombre del autor (4 vCPU, 16 GB RAM, 200 GB SSD) + NAS físico propio (2 × 4 TB RAID 1 + UPS) con copia cifrada diaria a las 2:00 a. m. |
 | Entradas | Correo central de PQRS (Gmail), radicación presencial (escáner → Google Drive), página web de la alcaldía, Facebook e Instagram; WhatsApp después |
-| OCR | Docling + Tesseract en español → Markdown |
+| OCR | PDF con texto: lectura directa (pypdf). PDF escaneado o imagen: Docling + EasyOCR en español → Markdown (se instala solo con pip, sin programas aparte en Windows) |
 | IA | API de Claude (`claude-opus-5-5` por defecto, configurable), solo clasificación; respaldo por palabras clave |
 | Términos | Días hábiles sin festivos (Ley 1755 de 2015); fecha interna = día 10 de 15 |
 | Alertas | Pantalla completa en cada PC a las 8:00 y 14:00 + Google Calendar y Tasks |

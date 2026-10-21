@@ -133,7 +133,7 @@ En el mismo servidor se conectan otros módulos: solicitudes internas, agente de
 | Resultado | 3 copias en 2 lugares |
 | En la alcaldía | Solo el equipo de red (mini PC con OPNsense), entregado en comodato |
 
-**Software del servidor:** Docker Compose · PostgreSQL 16 · MinIO (archivos) · n8n instalado en el servidor (mueve información: Gmail, Drive, redes sociales, Calendar, tareas programadas) · Python + FastAPI (reglas de negocio) · Docling + Tesseract en español (OCR) · API de Claude (clasificación) · React (panel web) · agente en Python compilado (.exe) para Windows 11 · OPNsense + AdGuard Home (red).
+**Software del servidor:** Docker Compose · PostgreSQL 16 · MinIO (archivos) · n8n instalado en el servidor (mueve información: Gmail, Drive, redes sociales, Calendar, tareas programadas) · Python + FastAPI (reglas de negocio) · Docling + EasyOCR en español (OCR; los PDF con texto se leen directo con pypdf) · API de Claude (clasificación) · React (panel web) · agente en Python compilado (.exe) para Windows 11 · OPNsense + AdGuard Home (red).
 
 **Regla de arquitectura:** la lógica de negocio vive en el backend, no en n8n. n8n solo mueve información. La licencia de n8n permite el uso interno; si se vende como servicio a varias alcaldías desde un servidor propio, hay que revisarla o pagar la edición Enterprise.
 
@@ -157,7 +157,8 @@ La ventanilla actual **no se toca**. En el piloto sigue funcionando en paralelo.
 ## 7. Procesamiento y clasificación
 
 1. **Radicado único:** número `VU-AAAA-NNNNNN`, fecha, hora y canal. Se guarda el PDF original sin modificar.
-2. **OCR:** Docling convierte el PDF a Markdown. Una página en Markdown usa ~700–900 tokens; la misma página como imagen, ~1.600. Si una página no se lee bien (manuscrito, sello), solo esa se envía como imagen.
+2. **OCR:** si el PDF ya trae texto (los que llegan por correo), se lee directo con pypdf, sin OCR. Si es un escaneo o una imagen, Docling con EasyOCR en español lo convierte a Markdown. Se instala solo con pip, sin programas aparte en Windows. Una página en Markdown usa ~700–900 tokens; la misma página como imagen, ~1.600. Pendiente: enviar como imagen solo las páginas que el OCR no lea bien (manuscritos, sellos).
+   - **Carpeta de escaneos** (`ventanilla/entrada.py`): revisa la carpeta de Google Drive para escritorio, espera 10 segundos a que Drive termine de copiar, radica, y mueve el archivo a `Procesados/` con el número de radicado como nombre. Si no se puede leer, va a `Errores/` y sigue con los demás.
 3. **Clasificación con IA:** recibe el Markdown y las palabras clave de cada dependencia, y devuelve JSON con: `tipo`, `dependencia`, `prioritario`, `motivo_prioridad`, `competencia_alcaldia`, `asunto`, `peticionario` (nombre, documento, correo_respuesta, direccion) y `confianza` (0–1).
    - Si la confianza es menor a 0,80, la PQRS queda en **revisión humana**: el asignador solo confirma los casos dudosos.
    - Tutela → dependencia jurídica, con alerta inmediata.
@@ -376,12 +377,14 @@ Ubicación: `ventanilla-unica/backend/` (Python 3.11+). Almacenamiento en memori
 | `ventanilla/clasificador.py` | IA con la API de Claude (salida JSON estructurada, respaldo automático del servidor si la IA declina) + clasificador por palabras clave |
 | `ventanilla/asignacion.py` | Funcionario por tema y carga, plan diario por jornada, alertas, escalamiento |
 | `ventanilla/servicio.py` | Radicar → revisión → asignar → aprobación del jefe → devolución por competencia → cerrar; consulta del ciudadano |
+| `ventanilla/ocr.py` | PDF con texto → lectura directa; escaneo o imagen → OCR con Docling + EasyOCR (español) |
+| `ventanilla/entrada.py` | Radicación automática desde la carpeta de escaneos (Drive para escritorio) |
 | `ventanilla/inventario.py` | Entradas, salidas, gasto, activos, depreciación, traslados, bajas y reportes |
 | `ventanilla/api.py` | API web (FastAPI) |
 | `ventanilla/simulacion.py` | Piloto simulado con 22 PQRS ficticias |
 | `datos/alcaldia.json` | Las 9 dependencias con un jefe y 3 funcionarios ficticios cada una, y correo por dependencia |
 | `datos/pqrs_prueba.json` | 22 PQRS inventadas con la respuesta esperada |
-| `tests/` | 31 pruebas automáticas, todas aprobadas |
+| `tests/` | 37 pruebas automáticas (36 normales + 1 de OCR real que se activa con `VUI_PRUEBA_OCR=1`) |
 
 **Resultado de la simulación (palabras clave, sin IA):** dependencia correcta en 21 de 22 (95 %); la que falló quedó en revisión humana, así que ninguna se asignó mal. Tipo correcto en 22 de 22. En revisión humana: 4 de 22. La IA real no se ha probado aún (falta la clave de la API).
 
@@ -393,10 +396,11 @@ Ubicación: `ventanilla-unica/backend/` (Python 3.11+). Almacenamiento en memori
 ```
 cd ventanilla-unica\backend
 python -m venv .venv
-.venv\Scripts\pip install -e ".[dev]"
+.venv\Scripts\pip install -e ".[dev,ocr]"
 .venv\Scripts\python -m pytest
 .venv\Scripts\python -m ventanilla.simulacion
 .venv\Scripts\uvicorn ventanilla.api:app --reload
+.venv\Scripts\python -m ventanilla.entrada --carpeta "G:\Mi unidad\Escaneos PQRS" --cada 60
 ```
 Con IA: definir la variable `ANTHROPIC_API_KEY` y agregar `--ia` a la simulación.
 
@@ -478,7 +482,7 @@ Con IA: definir la variable `ANTHROPIC_API_KEY` y agregar `--ia` a la simulació
 
 ## 21. Siguientes pasos de desarrollo
 
-1. OCR con Docling y lectura de la carpeta de Google Drive y del correo central (Gmail).
+1. Lectura del correo central (Gmail). (El OCR y la carpeta de escaneos ya están hechos.)
 2. Probar la clasificación con la IA real usando las PQRS anonimizadas y medir el costo.
 3. Base de datos PostgreSQL y panel web (asignador, jefes, funcionarios, ordenador del gasto).
 4. Agente de Windows: alertas de jornada y actividad.

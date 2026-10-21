@@ -71,6 +71,7 @@ class PQRS(BaseModel):
     canal: Canal
     fecha_radicacion: datetime
     texto: str
+    archivo_original: str = ""  # ruta del PDF o imagen original (prueba documental)
     clasificacion: Clasificacion
     estado: Estado
     funcionario_id: str | None = None
