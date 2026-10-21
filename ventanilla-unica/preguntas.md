@@ -28,7 +28,7 @@
 | PQRS de prueba | El autor puede conseguir 10–20 anonimizadas |
 | Cuenta de Anthropic | Existe, con correo personal |
 | Trabajo siguiente | Desde Claude Code en el computador, con Claude in Chrome |
-| Página web | El autor tiene la dirección; acceso de usuario común |
+| Página web | https://www.ramiriqui-boyaca.gov.co/ (acceso de usuario común). Plataforma por identificar: desde la nube de Claude no se pudo abrir (red bloqueada); revisar desde el PC del autor con Claude in Chrome |
 | Génesis y ventanilla | El autor tiene usuario; solo valida información; puede usar IA en sus actividades del contrato |
 | Desarrollo | Secretaría de Desarrollo Social y Económico |
 | Bienes y Servicios | Inventario |

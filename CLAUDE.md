@@ -24,6 +24,7 @@ Documentos clave (leer antes de cambiar algo grande):
 - Proceso actual: asignación tarda 1–2 días con dos personas; el jefe de cada dependencia decide quién responde, firma y envía la respuesta por correo; no hay prórrogas; correo de Workspace por dependencia (no por funcionario); cada PC es de una persona.
 - Diseño: la IA propone funcionario y el jefe aprueba o cambia; la dependencia puede devolver por competencia (términos no se reinician). Seguimiento de horario solo a personal de planta (no a contratistas).
 - Bienes y Servicios = inventario: consumo → gasto de la dependencia; devolutivo → activo con placa y responsable (`ventanilla/inventario.py`).
+- Página web pública: https://www.ramiriqui-boyaca.gov.co/ (Ramiriquí, Boyacá). Pendiente identificar su plataforma y cómo recibe PQRS hoy (se puede revisar con Claude in Chrome: es pública).
 - Google Workspace. Internet: Colombia Más. Génesis en la nube del proveedor. Recaudo: Banco de Bogotá.
 - Jornadas 8:00–12:00 y 14:00–18:00.
 - Además: Concejo Municipal y Personería, entidades independientes. Se hace seguimiento solo a sus dos secretarias de planta (están en la nómina de la alcaldía). El Concejo tiene sesiones ordinarias (en los periodos de ley; el autor las llama "sincrónicas") y extraordinarias (fuera de esos periodos; "asincrónicas").
