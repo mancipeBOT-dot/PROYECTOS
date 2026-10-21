@@ -7,6 +7,7 @@ Uso:
 
 import argparse
 import json
+import sys
 from collections import Counter
 from datetime import date, datetime, timedelta
 
@@ -17,6 +18,8 @@ from .servicio import Ventanilla
 
 
 def main() -> None:
+    # En Windows la consola o un archivo redirigido pueden usar cp1252, que no tiene ✔ ni →.
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--ia", action="store_true", help="clasificar con la API de Claude")
     parser.add_argument("--hoy", type=date.fromisoformat, default=date(2026, 10, 20), help="fecha simulada (AAAA-MM-DD)")
