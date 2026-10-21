@@ -75,6 +75,9 @@ def procesar_carpeta(
             destino = _mover(archivo, carpeta / CARPETA_PROCESADOS, f"{pqrs.radicado}{archivo.suffix.lower()}")
             pqrs.archivo_original = str(destino)
             resultados.append(ResultadoArchivo(archivo.name, pqrs=pqrs))
+        except ImportError:
+            # Falta Docling en este PC: ningún escaneo se podría leer. Se detiene sin mover nada.
+            raise SystemExit('Falta el OCR. Instálelo con: pip install -e ".[ocr]"')
         except Exception as error:  # un archivo dañado no detiene la carpeta
             log.exception("No se pudo procesar %s", archivo.name)
             _mover(archivo, carpeta / CARPETA_ERRORES, archivo.name)

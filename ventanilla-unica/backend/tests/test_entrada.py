@@ -100,13 +100,28 @@ def test_documento_ilegible_va_a_errores_sin_detener_la_carpeta(tmp_path, ventan
     assert (tmp_path / CARPETA_ERRORES / "a_blanco.pdf").exists()
 
 
+def test_sin_docling_se_detiene_sin_mover_escaneos(tmp_path, ventanilla):
+    envejecer(crear_pdf(tmp_path / "escaneo.pdf", []))
+
+    def sin_docling(ruta):
+        raise ImportError("No module named 'docling'")
+
+    with pytest.raises(SystemExit):
+        procesar_carpeta(tmp_path, ventanilla, sin_docling)
+    assert (tmp_path / "escaneo.pdf").exists()
+    assert not (tmp_path / CARPETA_ERRORES).exists()
+
+
 @pytest.mark.skipif(os.getenv("VUI_PRUEBA_OCR") != "1", reason="OCR real: VUI_PRUEBA_OCR=1 (descarga modelos)")
 def test_ocr_real_con_docling(tmp_path):
     from PIL import Image, ImageDraw, ImageFont
 
     imagen = Image.new("RGB", (1700, 600), "white")
     dibujo = ImageDraw.Draw(imagen)
-    fuente = ImageFont.truetype("DejaVuSans.ttf", 44)
+    try:
+        fuente = ImageFont.truetype("DejaVuSans.ttf", 44)  # Linux
+    except OSError:
+        fuente = ImageFont.truetype("arial.ttf", 44)  # Windows
     dibujo.text((60, 80), "Solicito paz y salvo del impuesto predial", fill="black", font=fuente)
     dibujo.text((60, 180), "del predio 01-00-0123. Cédula 1234567.", fill="black", font=fuente)
     ruta = tmp_path / "escaneo.pdf"
